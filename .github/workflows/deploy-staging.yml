@@ -1,0 +1,162 @@
+name: Deploy Staging Portal-Revenda
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  project-checkout:
+    runs-on: paygo-yarn
+    environment: Staging
+    steps:
+      - uses: actions/checkout@v2
+
+  notify-start:
+    runs-on: paygo-yarn
+    needs: [project-checkout]
+    outputs:
+      deployment_id: ${{ steps.deployment.outputs.deployment_id }}
+    steps:
+      - name: Start deployment status
+        uses: bobheadxi/deployments@v0.5.2
+        id: deployment
+        with:
+          step: start
+          token: ${{ secrets.GITHUB_TOKEN }}
+          env: Staging
+
+      - name: Slack Notification start of deployment stream-repo-portal
+        uses: rtCamp/action-slack-notify@v2.1.3
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          SLACK_CHANNEL: stream-repo-portal
+          SLACK_COLOR: '#59656f'
+          SLACK_TITLE: Portal-Revenda Staging
+          SLACK_ICON: https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png
+          SLACK_USERNAME: Github Actions
+          SLACK_MESSAGE: 'Começando deploy staging :construction:'
+          SLACK_FOOTER: 'https://portal-revenda-staging.paygo.com.br/'
+
+  setup:
+    runs-on: paygo-yarn
+    needs: [project-checkout]
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Check if its not the main branch
+        if: github.ref != 'refs/heads/main'
+        uses: actions/github-script@v3
+        with:
+          script: |
+            core.setFailed('Tried to deploy to non main branch')
+
+      - name: setup cache for node_modules
+        uses: actions/cache@v2
+        id: node_modules_cache
+        with:
+          path: node_modules
+          key: yarn-portal-revenda-${{ hashFiles('yarn.lock') }}
+          restore-keys: |
+            yarn-portal-revenda-${{ hashFiles('yarn.lock') }}
+
+      - name: Install Dependencies
+        run: yarn install
+
+  build-project:
+    runs-on: paygo-yarn
+    needs: [setup]
+    env:
+      REACT_APP_API_ADDRESS: https://api-sandbox.paygo.com.br/portal-revenda/v1
+      REACT_APP_WHITELABEL: paygo
+      GENERATE_SOURCEMAP: true
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Load node_modules
+        uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: yarn-portal-revenda-${{ hashFiles('yarn.lock') }}
+
+      - name: build project
+        run: yarn run build
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: build-staging
+          path: build
+
+  deploy-staging:
+    runs-on: paygo-aws
+    needs: [build-project]
+    environment: Staging
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: actions/download-artifact@v2
+        with:
+          name: build-staging
+          path: ./build
+
+      - name: sync s3
+        uses: jakejarvis/s3-sync-action@v0.5.1
+        with:
+          args: --delete
+        env:
+          AWS_S3_BUCKET: ${{ secrets.AWS_BUCKET_NAME }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
+          SOURCE_DIR: './build'
+
+      - name: invalidate cloudfront
+        uses: chetan/invalidate-cloudfront-action@v1.3
+        env:
+          DISTRIBUTION: ${{ secrets.AWS_DISTRIBUTION_ID }}
+          PATHS: '/*'
+          AWS_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
+  notify-end:
+    runs-on: paygo-yarn
+    needs: [notify-start, setup, build-project, deploy-staging]
+    if: always()
+    outputs:
+      deployment_id: ${{ steps.deployment.outputs.deployment_id }}
+    steps:
+      - name: End deployment status failure
+        uses: bobheadxi/deployments@v0.5.2
+        if: always()
+        with:
+          step: finish
+          token: ${{ secrets.GITHUB_TOKEN }}
+          status: ${{ job.status }}
+          deployment_id: ${{ needs.notify-start.outputs.deployment_id }}
+          env_url: https://portal-revenda-staging.paygo.com.br/
+
+      - name: Slack Notification success end of deployment stream-repo-portal
+        uses: rtCamp/action-slack-notify@v2.1.3
+        if: needs.setup.result == 'success' || needs.build-project.result == 'success' || needs.deploy-staging.result == 'success'
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          SLACK_CHANNEL: stream-repo-portal
+          SLACK_COLOR: 'good'
+          SLACK_TITLE: Portal-Revenda Staging
+          SLACK_ICON: https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png
+          SLACK_USERNAME: Github Actions
+          SLACK_MESSAGE: 'Deploy em staging concluido :rocket:'
+          SLACK_FOOTER: 'https://portal-revenda-staging.paygo.com.br/'
+
+      - name: Slack Notification failure end of deployment stream-repo-portal
+        uses: rtCamp/action-slack-notify@v2.1.3
+        if: needs.setup.result != 'success' || needs.build-project.result != 'success' || needs.deploy-staging.result != 'success'
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          SLACK_CHANNEL: stream-repo-portal
+          SLACK_COLOR: 'danger'
+          SLACK_TITLE: Portal-Revenda Staging
+          SLACK_ICON: https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png
+          SLACK_USERNAME: Github Actions
+          SLACK_MESSAGE: 'Ocorreu um erro ao fazer o deploy em staging :rotating_light:'

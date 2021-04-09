@@ -1,0 +1,14 @@
+{
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true,
+    "source.fixAll.eslint": true
+  },
+  "editor.tabSize": 2,
+  "editor.wordWrapColumn": 120,
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "px-to-rem.px-per-rem": 16,
+  "files.eol": "\n",
+  "git.inputValidationSubjectLength": 70,
+  "prettier.packageManager": "yarn",
+  "prettier.configPath": ".prettierrc.js"
+}

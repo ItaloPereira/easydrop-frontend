@@ -1,0 +1,82 @@
+name: Validation React Typescript PR
+
+on: [pull_request]
+
+jobs:
+  setup:
+    runs-on: paygo-yarn
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: setup cache for node_modules
+        uses: actions/cache@v2.1.2
+        id: node_modules_cache
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-node
+
+      - name: Install Dependencies
+        run: yarn install
+
+  jest:
+    runs-on: paygo-yarn
+    needs: [setup]
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Load node_modules
+        uses: actions/cache@v2.1.2
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('yarn.lock') }}
+
+      - name: run jest
+        run: yarn run test:staged
+
+  typecheck:
+    runs-on: paygo-yarn
+    needs: [setup]
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Load node_modules
+        uses: actions/cache@v2.1.2
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('yarn.lock') }}
+
+      - name: run typecheck
+        run: yarn run tsc --project tsconfig.json --noEmit --skipLibCheck
+
+  linting:
+    runs-on: paygo-yarn
+    needs: [setup]
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Load node_modules
+        uses: actions/cache@v2.1.2
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('yarn.lock') }}
+
+      - name: run eslint
+        run: yarn run eslint -c ./.eslintrc.js ./src --ext .ts,.tsx,.js
+
+  build-project:
+    runs-on: paygo-yarn
+    needs: [jest, typecheck, linting]
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Load node_modules
+        uses: actions/cache@v2.1.2
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('yarn.lock') }}
+
+      - name: build project
+        run: yarn run build
