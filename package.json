@@ -5,9 +5,6 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "cross-env NODE_ICU_DATA=node_modules/full-icu react-scripts test --runInBand",
-    "test:staged": "cross-env NODE_ICU_DATA=node_modules/full-icu yarn test --watchAll false",
-    "test:coverage": "cross-env NODE_ICU_DATA=node_modules/full-icu yarn test:staged --coverage",
     "lint": "eslint '*/**/*.{js,ts,tsx}' --quiet --fix",
     "postinstall": "husky install"
   },
@@ -49,9 +46,6 @@
     "web-vitals": "^1.0.1"
   },
   "devDependencies": {
-    "@testing-library/jest-dom": "^5.11.4",
-    "@testing-library/react": "^11.1.0",
-    "@testing-library/user-event": "^12.1.10",
     "@types/css-mediaquery": "^0.1.0",
     "@types/jest": "^26.0.20",
     "@types/react": "^17.0.2",

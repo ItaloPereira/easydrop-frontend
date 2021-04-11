@@ -139,7 +139,6 @@ const AuthFormsForgot: FunctionComponent<Props> = ({ onSubmit, onBack, onHelp, e
             variant="filled"
             severity="error"
             icon={<ReportProblemIcon />}
-            data-testid="box-error-alert"
             aria-label="caixa com alerta de erro"
           >
             {errorMsg}

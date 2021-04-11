@@ -150,7 +150,6 @@ Geralmente, num mesmo escopo podemos nos deparar com cenários que necessitem de
 
 - constants.ts, contém valores imutáveis;
 - types.d.ts, são definições de tipos;
-- **mocks**.ts, contém valores constantes para serem usados dentro de testes
 
 **Imports**:
 

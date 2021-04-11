@@ -26,7 +26,7 @@
           "action": {
             "type": "button",
             "content": "small button",
-            "link": "https://paygo.com.br/"
+            "link": "https://google.com/"
           },
           "id": 3
         },
@@ -65,7 +65,7 @@
           "action": {
             "type": "button",
             "content": "small button",
-            "link": "https://paygo.com.br/"
+            "link": "https://google.com/"
           },
           "id": 8
         },

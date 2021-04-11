@@ -40,19 +40,17 @@ const SideMenuUserArea: FunctionComponent<Props> = ({ userName, organizationName
   const classes = useStyles();
 
   return (
-    <Box className={classes.root} data-testid="user-area">
-      <Avatar alt={userName} data-testid="user-avatar" className={classes.avatar}>
+    <Box className={classes.root}>
+      <Avatar alt={userName} className={classes.avatar}>
         <Typography variant="bodyWebBold" className={classes.avatarLetters}>
           {helpersFormatters.userInitials(userName)}
         </Typography>
       </Avatar>
       <Box display="flex" flexDirection="column">
-        <Typography variant="bodyWebBold" component="p" className={classes.typography} data-testid="user-name">
+        <Typography variant="bodyWebBold" component="p" className={classes.typography}>
           {userName}
         </Typography>
-        <Typography variant="captionWeb" data-testid="user-name">
-          {`${organizationName} | ${organizationDocument}`}
-        </Typography>
+        <Typography variant="captionWeb">{`${organizationName} | ${organizationDocument}`}</Typography>
       </Box>
     </Box>
   );

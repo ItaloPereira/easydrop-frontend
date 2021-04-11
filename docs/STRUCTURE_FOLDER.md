@@ -19,7 +19,6 @@ A estrutura de pastas e arquivos do projeto em seu `Source` ficará da seguinte 
 │ ├── index.ts
 │ ├── react-app-env.d.ts
 │ ├── serviceWorker.ts
-└── └── setupTests.ts
 ```
 
 Para melhor explicar e exemplificar, falaremos das responsabilidades de cada pasta abaixo:
@@ -199,12 +198,9 @@ Essa pasta tem como responsabilidades, manter e organizar todos os temas base cr
 │ │ └── index.tsx
 │ ├── Transaction
 │ │ ├── List
-│ │ │ ├── TransactionList.tsx
-│ │ │ ├── TransactionList.test.tsx
 │ │ │ ├── index.tsx
 │ │ └── Skeleton
 │ │ ├── **mocks**.ts
-│ │ ├── TransactionSkeleton.test.tsx
 │ │ ├── constants.ts
 │ │ ├── types.d.ts
 │ │ ├── TransactionSkeleton.tsx
@@ -213,7 +209,6 @@ Essa pasta tem como responsabilidades, manter e organizar todos os temas base cr
 │ ├── SideMenu.tsx
 │ └── LogoutButton
 │ ├── SideMenuLogoutButton.tsx
-│ ├── SideMenuLougoutButton.test.tsx
 │ └── index.tsx
 ├── layouts
 │ ├── Auth.tsx
@@ -241,7 +236,6 @@ Essa pasta tem como responsabilidades, manter e organizar todos os temas base cr
 │ │ ├── **mocks**.ts
 │ │ ├── actions.ts
 │ │ ├── constants.ts
-│ │ ├── index.test.ts
 │ │ ├── index.ts
 │ │ ├── reducers.ts
 │ │ ├── selectors.ts
@@ -252,7 +246,6 @@ Essa pasta tem como responsabilidades, manter e organizar todos os temas base cr
 │ └── transactions
 │ ├── **mocks**.ts
 │ ├── constants.ts
-│ ├── index.test.ts
 │ ├── index.ts
 │ └── types.d.ts
 ├── routes
@@ -260,7 +253,6 @@ Essa pasta tem como responsabilidades, manter e organizar todos os temas base cr
 │ │ ├── index.ts
 │ │ ├── constants.ts
 │ │ ├── AuthGuardian.tsx
-│ │ └── AuthGuardian.test.tsx
 │ ├── private.tsx
 │ ├── public.tsx
 │ └── index.tsx
@@ -269,10 +261,8 @@ Essa pasta tem como responsabilidades, manter e organizar todos os temas base cr
 ├── helpers
 │ ├── formatters
 │ │ ├── formatters.ts
-│ │ ├── formatters.test.ts
 │ │ └── index.ts
 │ ├── dates.ts
 │ │ ├── dates.ts
-│ │ ├── dates.test.ts
 └──└──└── index.ts
 ```

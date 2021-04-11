@@ -4,7 +4,6 @@ import { useSelector } from 'react-redux';
 import { Box } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
-import PayGoDashImage from 'assets/images/paygo-dash.svg';
 import { useAppDispatch } from 'hooks/redux';
 import { AuthActions, AuthSelectors } from 'store/reducers/auth';
 
@@ -32,8 +31,8 @@ const SideMenu: FunctionComponent = () => {
   const authData = useSelector(AuthSelectors.authDataSelector)!;
 
   return (
-    <Box className={classes.root} data-testid="side-menu-desktop">
-      <img src={PayGoDashImage} className={classes.logoImage} alt="paygo dashboard logo" />
+    <Box className={classes.root}>
+      {/* <img src={} className={classes.logoImage} alt=" dashboard logo" /> */}
       <SideMenuUserArea
         userName={authData.name}
         organizationName={authData.businessName}

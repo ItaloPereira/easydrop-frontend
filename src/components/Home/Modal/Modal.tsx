@@ -79,8 +79,8 @@ const StatusModal: FunctionComponent<Props> = ({ isModalOpen, onClose, status })
   };
 
   const messages = {
-    success: 'Todas as operações da PayGo\nestão funcionando normalmente',
-    warning: 'As operações da PayGo estão instáveis no momento,\naguarde uns instantes para retornar.',
+    success: 'Todas as operações \nestão funcionando normalmente',
+    warning: 'As operações da estão instáveis no momento,\naguarde uns instantes para retornar.',
     error:
       'Estamos passando por instabilidade em nossos provedores,\nnossa equipe está trabalhando nisso e a previsão para\nnormalização é de 3 horas.',
   };

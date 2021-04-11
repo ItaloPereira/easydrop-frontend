@@ -62,7 +62,6 @@ Tipos de ações feitas no contexto do commit:
 - `refactor`: Melhoria de um recurso existente;
 - `feat`: Quando é adicionado um novo recurso, ou especificação pertencente à um recurso já em desenvolvimento; não deve estar correlacionado à nenhuma correção, melhoria na aplicação;
 - `chore`: Mudanças de configurações, atualizações de ferramentas/bibliotecas, ajustes nas construções/build, e coisas correlacionadas;
-- `test`: Adicionar testes faltantes ou melhorar testes existentes; nenhum código de produção atualizado;
 - `doc`: Mudanças ou melhorias em documentação; nenhum código de produção atualizado;
 - `style`: formatação, falta de ponto e vírgula, etc; nenhum código de produção atualizado;
 

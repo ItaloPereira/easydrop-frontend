@@ -3,7 +3,6 @@ import { Outlet } from 'react-router-dom';
 import { Box, makeStyles } from '@material-ui/core';
 
 import authimage from 'assets/images/authImage.png';
-import { ReactComponent as PayGoLogo } from 'assets/images/paygo-logo.svg';
 import Typography from 'components/UI/Typography';
 
 const useStyles = makeStyles((theme) => ({
@@ -66,15 +65,13 @@ const AuthLayout = () => {
     <Box className={styles.container}>
       <Box className={styles.imageContainer} />
       <Box className={styles.authContainer}>
-        <Box className={styles.header}>
-          <PayGoLogo />
-        </Box>
+        <Box className={styles.header}>LOGO</Box>
         <Box className={styles.content}>
           <Outlet />
         </Box>
         <Box className={styles.footer}>
           <Typography className={styles.footerText} variant="captionWeb">
-            Powered by PayGo Pagamentos
+            Powered by EasyDrop Pagamentos
           </Typography>
           <Typography className={styles.footerText} variant="captionWeb">
             v 0.0.0

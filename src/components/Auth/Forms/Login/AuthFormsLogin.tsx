@@ -133,13 +133,11 @@ const AuthFormsEmail: FunctionComponent<Props> = ({
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const isValidPassword = !passwordValue;
-    setUsernameError(helpersValidates.isEmpty(usernameValue));
-    setPasswordError(isValidPassword);
 
-    if (usernameValue.trim() !== '' && !isValidPassword) {
-      onLogin({ username: usernameValue, password: passwordValue, rememberUsername });
-    }
+    window.location.href =
+      'https://loja-easydrop-1.myshopify.com/admin/oauth/request_grant?client_id=8c80422b07337f3a7cf008939fd52d42&grant_options%5B%5D=per-user&redirect_uri=http://localhost:3000&scope=write_orders%2Cread_customers&state=19239';
+
+    return null;
   };
   if (isLoading) {
     return (
@@ -182,7 +180,6 @@ const AuthFormsEmail: FunctionComponent<Props> = ({
                   autoComplete="username"
                   inputProps={{
                     'aria-label': 'campo de login',
-                    'data-testid': 'login-textfield',
                   }}
                 />
               </FormControl>
@@ -224,7 +221,6 @@ const AuthFormsEmail: FunctionComponent<Props> = ({
                 }
                 inputProps={{
                   'aria-label': 'campo de senha',
-                  'data-testid': 'password-textfield',
                 }}
                 InputProps={{
                   endAdornment: passwordValue && (
@@ -246,13 +242,7 @@ const AuthFormsEmail: FunctionComponent<Props> = ({
             </FormControl>
           </Box>
           {errorMsg && (
-            <Alert
-              variant="filled"
-              severity="error"
-              icon={<ErrorIcon />}
-              data-testid="box-error-alert"
-              aria-label="caixa com alerta de erro"
-            >
+            <Alert variant="filled" severity="error" icon={<ErrorIcon />} aria-label="caixa com alerta de erro">
               <Typography variant="bodyWeb">{errorMsg}</Typography>
             </Alert>
           )}
