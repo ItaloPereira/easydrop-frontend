@@ -4,7 +4,7 @@ import { useCallback, useState } from 'react';
 import { Box, List, ListItem, ListItemText } from '@material-ui/core';
 import { useTheme, makeStyles } from '@material-ui/core/styles';
 
-import { Cell, Pie, PieChart, Sector, ResponsiveContainer } from 'recharts';
+// import { Cell, Pie, PieChart, Sector, ResponsiveContainer } from 'recharts';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -52,18 +52,19 @@ const HomePieChart: FunctionComponent<Props> = ({ chartData }) => {
     const { cx, cy, innerRadius, outerRadius, startAngle, endAngle, fill } = props;
 
     return (
-      <g>
-        <Sector
-          cx={cx}
-          cy={cy}
-          cornerRadius={15}
-          innerRadius={innerRadius}
-          outerRadius={outerRadius}
-          startAngle={startAngle}
-          endAngle={endAngle}
-          fill={fill}
-        />
-      </g>
+      <p>eu to trajadin de mengo, tenis da nike no pé e boné da lala vermelho, do rio grande do sul</p>
+      // <g>
+      //   <Sector
+      //     cx={cx}
+      //     cy={cy}
+      //     cornerRadius={15}
+      //     innerRadius={innerRadius}
+      //     outerRadius={outerRadius}
+      //     startAngle={startAngle}
+      //     endAngle={endAngle}
+      //     fill={fill}
+      //   />
+      // </g>
     );
   };
 
@@ -84,7 +85,7 @@ const HomePieChart: FunctionComponent<Props> = ({ chartData }) => {
 
   return (
     <Box display="flex" className={classes.root} flexDirection="row" height={200} mt={3} alignItems="center">
-      <ResponsiveContainer width="75%">
+      {/* <ResponsiveContainer width="75%">
         <PieChart>
           <Pie
             activeIndex={activeIndex}
@@ -108,7 +109,7 @@ const HomePieChart: FunctionComponent<Props> = ({ chartData }) => {
             ))}
           </Pie>
         </PieChart>
-      </ResponsiveContainer>
+      </ResponsiveContainer> */}
       <List className={classes.listContent}>
         {chartData.map((entry, index) => (
           <ListItem key={entry.key}>

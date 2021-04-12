@@ -1,89 +1,44 @@
 @font-face {
   font-display: swap;
-  font-family: 'C6 Sans Display';
+  font-family: 'hind_vadodarabold';
+  src: url('fonts/hindvadodara-bold-webfont.woff2') format('woff2'),
+    url('fonts/hindvadodara-bold-webfont.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-display: swap;
+  font-family: 'hind_vadodaralight';
+  src: url('fonts/hindvadodara-light-webfont.woff2') format('woff2'),
+    url('fonts/hindvadodara-light-webfont.woff') format('woff');
   font-weight: 300;
-  src: url('fonts/C6Sans/EOT/C6SansDisplay-Light.eot');
-  src: url('fonts/C6Sans/EOT/C6SansDisplay-Light.eot?#iefix') format('embedded-opentype'),
-    url('fonts/C6Sans/WOFF2/C6SansDisplay-Light.woff2') format('woff2'),
-    url('fonts/C6Sans/WOFF/C6SansDisplay-Light.woff') format('woff');
+  font-style: normal;
 }
 
 @font-face {
   font-display: swap;
-  font-family: 'C6 Sans Display';
-  font-weight: 400;
-  src: url('fonts/C6Sans/EOT/C6SansDisplay-Regular.eot');
-  src: url('fonts/C6Sans/EOT/C6SansDisplay-Regular.eot?#iefix') format('embedded-opentype'),
-    url('fonts/C6Sans/WOFF2/C6SansDisplay-Regular.woff2') format('woff2'),
-    url('fonts/C6Sans/WOFF/C6SansDisplay-Regular.woff') format('woff');
-}
-
-@font-face {
-  font-display: swap;
-  font-family: 'C6 Sans Display';
+  font-family: 'hind_vadodaramedium';
+  src: url('fonts/hindvadodara-medium-webfont.woff2') format('woff2'),
+    url('fonts/hindvadodara-medium-webfont.woff') format('woff');
   font-weight: 500;
-  src: url('fonts/C6Sans/EOT/C6SansDisplay-Medium.eot');
-  src: url('fonts/C6Sans/EOT/C6SansDisplay-Medium.eot?#iefix') format('embedded-opentype'),
-    url('fonts/C6Sans/WOFF2/C6SansDisplay-Medium.woff2') format('woff2'),
-    url('fonts/C6Sans/WOFF/C6SansDisplay-Medium.woff') format('woff');
+  font-style: normal;
 }
 
 @font-face {
   font-display: swap;
-  font-family: 'C6 Sans Display';
-  font-weight: 600;
-  src: url('fonts/C6Sans/EOT/C6SansDisplay-SemiBold.eot');
-  src: url('fonts/C6Sans/EOT/C6SansDisplay-SemiBold.eot?#iefix') format('embedded-opentype'),
-    url('fonts/C6Sans/WOFF2/C6SansDisplay-SemiBold.woff2') format('woff2'),
-    url('fonts/C6Sans/WOFF/C6SansDisplay-SemiBold.woff') format('woff');
-}
-
-@font-face {
-  font-display: swap;
-  font-family: 'C6 Sans Display';
-  font-weight: 700;
-  src: url('fonts/C6Sans/EOT/C6SansDisplay-Bold.eot');
-  src: url('fonts/C6Sans/EOT/C6SansDisplay-Bold.eot?#iefix') format('embedded-opentype'),
-    url('fonts/C6Sans/WOFF2/C6SansDisplay-Bold.woff2') format('woff2'),
-    url('fonts/C6Sans/WOFF/C6SansDisplay-Bold.woff') format('woff');
-}
-
-@font-face {
-  font-display: swap;
-  font-family: 'C6 Sans Display';
-  font-weight: 800;
-  src: url('fonts/C6Sans/EOT/C6SansDisplay-ExtraBold.eot');
-  src: url('fonts/C6Sans/EOT/C6SansDisplay-ExtraBold.eot?#iefix') format('embedded-opentype'),
-    url('fonts/C6Sans/WOFF2/C6SansDisplay-ExtraBold.woff2') format('woff2'),
-    url('fonts/C6Sans/WOFF/C6SansDisplay-ExtraBold.woff') format('woff');
-}
-
-@font-face {
-  font-display: swap;
-  font-family: 'C6 Sans Text';
+  font-family: 'hind_vadodararegular';
+  src: url('fonts/hindvadodara-regular-webfont.woff2') format('woff2'),
+    url('fonts/hindvadodara-regular-webfont.woff') format('woff');
   font-weight: 400;
-  src: url('fonts/C6Sans/EOT/C6SansText-Regular.eot');
-  src: url('fonts/C6Sans/EOT/C6SansText-Regular.eot?#iefix') format('embedded-opentype'),
-    url('fonts/C6Sans/WOFF2/C6SansText-Regular.woff2') format('woff2'),
-    url('fonts/C6Sans/WOFF/C6SansText-Regular.woff') format('woff');
+  font-style: normal;
 }
 
 @font-face {
   font-display: swap;
-  font-family: 'C6 Sans Text';
+  font-family: 'hind_vadodarasemibold';
+  src: url('fonts/hindvadodara-semibold-webfont.woff2') format('woff2'),
+    url('fonts/hindvadodara-semibold-webfont.woff') format('woff');
   font-weight: 600;
-  src: url('fonts/C6Sans/EOT/C6SansText-SemiBold.eot');
-  src: url('fonts/C6Sans/EOT/C6SansText-SemiBold.eot?#iefix') format('embedded-opentype'),
-    url('fonts/C6Sans/WOFF2/C6SansText-SemiBold.woff2') format('woff2'),
-    url('fonts/C6Sans/WOFF/C6SansText-SemiBold.woff') format('woff');
-}
-
-@font-face {
-  font-display: swap;
-  font-family: 'C6 Sans Text';
-  font-weight: 700;
-  src: url('fonts/C6Sans/EOT/C6SansText-Bold.eot');
-  src: url('fonts/C6Sans/EOT/C6SansText-Bold.eot?#iefix') format('embedded-opentype'),
-    url('fonts/C6Sans/WOFF2/C6SansText-Bold.woff2') format('woff2'),
-    url('fonts/C6Sans/WOFF/C6SansText-Bold.woff') format('woff');
+  font-style: normal;
 }

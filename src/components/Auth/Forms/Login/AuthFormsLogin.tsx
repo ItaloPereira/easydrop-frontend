@@ -71,19 +71,19 @@ const useStyles = makeStyles((theme) => ({
     cursor: 'pointer',
 
     '& span': {
-      color: theme.palette.carbon[60],
+      color: '#0000',
     },
 
     '& svg': {
-      color: theme.palette.carbon[60],
+      color: '#0000',
       fontSize: '1rem',
     },
   },
   checkbox: {
-    color: theme.palette.carbon[60],
+    color: '#0000',
   },
   visibilityButton: {
-    color: theme.palette.carbon[35],
+    color: '#0000',
   },
 }));
 

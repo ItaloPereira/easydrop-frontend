@@ -5,7 +5,7 @@ import { useTheme, makeStyles } from '@material-ui/core/styles';
 
 import Typography from 'components/UI/Typography';
 import helpersFormatters from 'helpers/formatters';
-import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer, CartesianGrid } from 'recharts';
+// import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer, CartesianGrid } from 'recharts';
 
 const useStyles = makeStyles((theme) => ({
   legend: {
@@ -31,7 +31,14 @@ const HomeBarChart: FunctionComponent<Props> = ({ chartData }) => {
   const theme = useTheme();
   const renderTick = ({ x, y, payload }: any) => {
     return (
-      <text fontFamily="C6 Sans Text" fontSize="12" x={x - 50} y={y} fill={theme.palette.carbon[60]} textAnchor="left">
+      <text
+        fontFamily="hind_vadodarabold"
+        fontSize="12"
+        x={x - 50}
+        y={y}
+        fill={theme.palette.carbon[60]}
+        textAnchor="left"
+      >
         {helpersFormatters.formatAmountInFull(payload.value)}
       </text>
     );
@@ -56,7 +63,7 @@ const HomeBarChart: FunctionComponent<Props> = ({ chartData }) => {
           <Typography variant="captionWeb">{chartData.actualYearLabel}</Typography>
         </Box>
       </Box>
-      <ResponsiveContainer width="98%">
+      {/* <ResponsiveContainer width="98%">
         <BarChart height={200} width={500} data={chartData.data} className={classes.chart}>
           <CartesianGrid vertical={false} />
           <XAxis dataKey="name" />
@@ -70,7 +77,7 @@ const HomeBarChart: FunctionComponent<Props> = ({ chartData }) => {
             radius={[8, 8, 0, 0]}
           />
         </BarChart>
-      </ResponsiveContainer>
+      </ResponsiveContainer> */}
     </Box>
   );
 };

@@ -7,7 +7,7 @@ import Typography from 'components/UI/Typography';
 
 const useStyles = makeStyles((theme) => ({
   container: {
-    backgroundColor: theme.palette.carbon[10],
+    backgroundColor: '#0000',
     display: 'flex',
     height: '100vh',
     overflowY: 'auto',
@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   authContainer: {
-    backgroundColor: theme.palette.marble[100],
+    backgroundColor: '#0000',
     height: '100vh',
     minWidth: 426,
     flex: 0.5,
@@ -45,7 +45,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
   },
   footer: {
-    borderTop: `1px solid ${theme.palette.carbon[35]}`,
+    borderTop: `1px solid #0000`,
     width: '100%',
     display: 'flex',
     justifyContent: 'space-between',
@@ -53,7 +53,7 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(4, 0),
   },
   footerText: {
-    color: theme.palette.carbon[35],
+    color: '#0000',
     fontSize: '0.875rem',
     lineHeight: '1.125rem',
   },
