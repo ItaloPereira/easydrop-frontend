@@ -124,11 +124,11 @@ const AuthFormsEmail: FunctionComponent<Props> = ({
   };
 
   const handleValidPassword = (e: FocusEvent<HTMLInputElement>) => {
-    setPasswordError(!e.target.value);
+    // setPasswordError(!e.target.value);
   };
 
   const handleValidUsername = (e: FocusEvent<HTMLInputElement>) => {
-    setUsernameError(!e.target.value);
+    // setUsernameError(!e.target.value);
   };
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
@@ -162,7 +162,7 @@ const AuthFormsEmail: FunctionComponent<Props> = ({
                   id="login-username"
                   type="email"
                   label="Seu usuário de acesso"
-                  variant="standard"
+                  variant="outlined"
                   value={usernameValue}
                   onChange={handleUserChange}
                   onBlur={handleValidUsername}
