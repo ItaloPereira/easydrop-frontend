@@ -1,5 +1,4 @@
-export type RegisterFormData = {
-  name: string;
+export type LoginFormData = {
   email: string;
-  whatsapp: string;
+  password: string;
 };

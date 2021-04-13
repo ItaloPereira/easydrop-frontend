@@ -1,18 +1,20 @@
 import type { FunctionComponent } from 'react';
 import { useForm, Controller } from 'react-hook-form';
+import InputMask from 'react-input-mask';
 
 import { Box, Button, CircularProgress, FormControl, InputAdornment, TextField } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import EmailIcon from '@material-ui/icons/Email';
 import ErrorIcon from '@material-ui/icons/Error';
-import LockIcon from '@material-ui/icons/Lock';
+import PersonIcon from '@material-ui/icons/Person';
+import WhatsAppIcon from '@material-ui/icons/WhatsApp';
 import { Alert } from '@material-ui/lab';
 
 import AuthCard from 'components/Auth/Card';
 import Typography from 'components/UI/Typography';
 import helpersValidates from 'helpers/validates';
 
-import { LoginFormData } from './types';
+import { RegisterFormData } from './types';
 
 const useStyles = makeStyles((theme) => ({
   form: {
@@ -60,8 +62,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 type Props = {
-  onRegister: () => void;
-  onLogin: (arg: { email: string; password: string }) => void;
+  onRegister: (arg: { name: string; email: string; whatsapp: string }) => void;
+  onLogin: () => void;
   formError?: string;
   loading: boolean;
 };
@@ -75,8 +77,8 @@ const AuthFormsEmail: FunctionComponent<Props> = ({ onRegister, onLogin, formErr
     handleSubmit,
   } = useForm();
 
-  const onSubmit = (data: LoginFormData) => {
-    onLogin(data);
+  const onSubmit = (data: RegisterFormData) => {
+    onRegister(data);
   };
 
   if (loading) {
@@ -91,11 +93,46 @@ const AuthFormsEmail: FunctionComponent<Props> = ({ onRegister, onLogin, formErr
       <AuthCard>
         <Box className={classes.root}>
           <Box>
-            <Typography variant="subtitleWebBold">Acesse a plataforma</Typography>
+            <Typography variant="subtitleWebBold">Crie sua conta e teste grátis</Typography>
           </Box>
 
           <Box className={classes.content}>
             <Box className={classes.inputs}>
+              {/* NAME */}
+              <FormControl fullWidth>
+                <Controller
+                  name="name"
+                  control={control}
+                  rules={{
+                    required: { value: true, message: 'Este campo é obrigatório' },
+                  }}
+                  defaultValue=""
+                  render={({ field }) => (
+                    <TextField
+                      {...field}
+                      error={Boolean(errors.name)}
+                      label="Nome"
+                      variant="outlined"
+                      id="register-name"
+                      autoComplete="name"
+                      autoFocus
+                      size="small"
+                      helperText={errors.name && errors.name.message}
+                      inputProps={{
+                        'aria-label': 'campo de nome',
+                      }}
+                      InputProps={{
+                        startAdornment: (
+                          <InputAdornment position="start">
+                            <PersonIcon className={classes.inputIcon} />
+                          </InputAdornment>
+                        ),
+                      }}
+                    />
+                  )}
+                />
+              </FormControl>
+
               {/* EMAIL */}
               <FormControl fullWidth>
                 <Controller
@@ -116,7 +153,7 @@ const AuthFormsEmail: FunctionComponent<Props> = ({ onRegister, onLogin, formErr
                       type="email"
                       label="E-mail"
                       variant="outlined"
-                      id="login-email"
+                      id="register-email"
                       autoComplete="email"
                       size="small"
                       helperText={errors.email && errors.email.message}
@@ -135,40 +172,45 @@ const AuthFormsEmail: FunctionComponent<Props> = ({ onRegister, onLogin, formErr
                 />
               </FormControl>
 
-              {/* PASSWORD */}
-              <FormControl fullWidth>
-                <Controller
-                  name="password"
-                  control={control}
-                  rules={{
-                    required: { value: true, message: 'Este campo é obrigatório' },
-                  }}
-                  defaultValue=""
-                  render={({ field }) => (
-                    <TextField
-                      {...field}
-                      error={Boolean(errors.password)}
-                      type="password"
-                      label="Senha"
-                      variant="outlined"
-                      id="login-password"
-                      autoComplete="password"
-                      size="small"
-                      helperText={errors.password && errors.password.message}
-                      inputProps={{
-                        'aria-label': 'campo de senha',
-                      }}
-                      InputProps={{
-                        startAdornment: (
-                          <InputAdornment position="start">
-                            <LockIcon className={classes.inputIcon} />
-                          </InputAdornment>
-                        ),
-                      }}
-                    />
-                  )}
-                />
-              </FormControl>
+              {/* WHATSAPP */}
+              <Controller
+                name="whatsapp"
+                control={control}
+                rules={{
+                  required: { value: true, message: 'Este campo é obrigatório' },
+                  // pattern: {
+                  //   value: helpersValidates.whatsAppPattern,
+                  //   message: 'Número inválido',
+                  // },
+                }}
+                defaultValue=""
+                render={({ field }) => (
+                  <InputMask mask="(99) 99999-9999" {...field}>
+                    {(inputMaskProps: any) => (
+                      <TextField
+                        {...inputMaskProps}
+                        error={Boolean(errors.whatsapp)}
+                        label="Whatsapp"
+                        variant="outlined"
+                        id="register-whatsapp"
+                        autoComplete="whatsapp"
+                        size="small"
+                        helperText={errors.whatsapp && errors.whatsapp.message}
+                        inputProps={{
+                          'aria-label': 'campo de whatsapp',
+                        }}
+                        InputProps={{
+                          startAdornment: (
+                            <InputAdornment position="start">
+                              <WhatsAppIcon className={classes.inputIcon} />
+                            </InputAdornment>
+                          ),
+                        }}
+                      />
+                    )}
+                  </InputMask>
+                )}
+              />
             </Box>
             {formError && (
               <Alert
@@ -184,22 +226,22 @@ const AuthFormsEmail: FunctionComponent<Props> = ({ onRegister, onLogin, formErr
             <Box className={classes.buttons}>
               <Button
                 type="submit"
-                title="Entrar"
+                title="Criar conta"
                 fullWidth
                 variant="contained"
                 color="primary"
                 size="large"
-                aria-label="botão para acessar a conta"
+                aria-label="botão para criar conta"
               >
-                Entrar
+                Criar conta
               </Button>
 
               <Box className={classes.loginContainer}>
                 <Typography variant="bodyWebLight" component="span">
-                  Não tem conta?
+                  Já tem conta?
                 </Typography>
-                <Typography variant="bodyWeb" component="span" className={classes.loginButton} onClick={onRegister}>
-                  Experimente grátis!
+                <Typography variant="bodyWeb" component="span" className={classes.loginButton} onClick={onLogin}>
+                  Entrar
                 </Typography>
               </Box>
             </Box>

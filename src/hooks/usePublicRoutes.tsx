@@ -1,6 +1,7 @@
 import { Navigate, useRoutes } from 'react-router';
 
 import AuthLayout from 'layouts/AuthLayout';
+import AuthLogin from 'pages/Auth/Login';
 import AuthRegister from 'pages/Auth/Register';
 
 const usePublicRoutes = () => {
@@ -16,6 +17,10 @@ const usePublicRoutes = () => {
         {
           path: '/register',
           element: <AuthRegister />,
+        },
+        {
+          path: '/login',
+          element: <AuthLogin />,
         },
       ],
     },

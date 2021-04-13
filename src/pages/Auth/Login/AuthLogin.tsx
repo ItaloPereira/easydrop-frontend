@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router';
 
-import AuthFormsRegister from 'components/Auth/Forms/Register';
+import AuthFormsLogin from 'components/Auth/Forms/Login';
 import { useAppDispatch } from 'hooks/redux';
 import { AuthActions, AuthSelectors } from 'store/reducers/auth';
 
@@ -19,13 +19,13 @@ const AuthLogin: FunctionComponent = () => {
     };
   }, [dispatch]);
 
-  const onRegister = ({ name, email, whatsapp }: { name: string; email: string; whatsapp: string }) => {
+  const onRegister = () => navigate('/auth/register');
+
+  const onLogin = ({ email, password }: { email: string; password: string }) => {
     // dispatch(AuthActions.login({ username: name, password: email, rememberUsername: true }));
   };
 
-  const onLogin = () => navigate('/auth/login');
-
-  return <AuthFormsRegister loading={authLoading} formError={authError} onRegister={onRegister} onLogin={onLogin} />;
+  return <AuthFormsLogin loading={authLoading} formError={authError} onRegister={onRegister} onLogin={onLogin} />;
 };
 
 export default AuthLogin;
