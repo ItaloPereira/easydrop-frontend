@@ -8,7 +8,7 @@ export const variantDictionary: Record<
 > = {
   headerWeb: {
     style: {
-      fontFamily: 'hind_vadodarabold',
+      fontFamily: 'hind_vadodara',
       fontWeight: 300,
       fontSize: '2.5rem',
       lineHeight: '3rem',
@@ -17,7 +17,7 @@ export const variantDictionary: Record<
   },
   headerWebMobile: {
     style: {
-      fontFamily: 'hind_vadodarabold',
+      fontFamily: 'hind_vadodara',
       fontWeight: 300,
       fontSize: '1.75rem',
       lineHeight: '2.25rem',
@@ -26,7 +26,7 @@ export const variantDictionary: Record<
   },
   headerWebBold: {
     style: {
-      fontFamily: 'hind_vadodarabold',
+      fontFamily: 'hind_vadodara',
       fontWeight: 600,
       fontSize: '2.5rem',
       lineHeight: '3rem',
@@ -36,7 +36,7 @@ export const variantDictionary: Record<
 
   headerWebBoldMobile: {
     style: {
-      fontFamily: 'hind_vadodarabold',
+      fontFamily: 'hind_vadodara',
       fontWeight: 600,
       fontSize: '1.75rem',
       lineHeight: '2.25rem',
@@ -45,7 +45,7 @@ export const variantDictionary: Record<
   },
   subtitleWeb: {
     style: {
-      fontFamily: 'hind_vadodarabold',
+      fontFamily: 'hind_vadodara',
       fontWeight: 300,
       fontSize: '1.5rem',
       lineHeight: '2rem',
@@ -54,7 +54,7 @@ export const variantDictionary: Record<
   },
   subtitleWebMobile: {
     style: {
-      fontFamily: 'hind_vadodarabold',
+      fontFamily: 'hind_vadodara',
       fontWeight: 300,
       fontSize: '1.25rem',
       lineHeight: '1.75rem',
@@ -63,7 +63,7 @@ export const variantDictionary: Record<
   },
   subtitleWebBold: {
     style: {
-      fontFamily: 'hind_vadodarabold',
+      fontFamily: 'hind_vadodara',
       fontSize: '1.5rem',
       lineHeight: '2rem',
       fontWeight: 600,
@@ -72,7 +72,7 @@ export const variantDictionary: Record<
   },
   subtitleWebBoldMobile: {
     style: {
-      fontFamily: 'hind_vadodarabold',
+      fontFamily: 'hind_vadodara',
       fontWeight: 600,
       fontSize: '1.25rem',
       lineHeight: '1.75rem',
@@ -81,7 +81,7 @@ export const variantDictionary: Record<
   },
   subtitleWebUppercase: {
     style: {
-      fontFamily: 'hind_vadodarabold',
+      fontFamily: 'hind_vadodara',
       fontWeight: 400,
       fontSize: '1rem',
       lineHeight: '1.25rem',
@@ -91,7 +91,7 @@ export const variantDictionary: Record<
   },
   subtitleWebUppercaseSmall: {
     style: {
-      fontFamily: 'hind_vadodarabold',
+      fontFamily: 'hind_vadodara',
       fontWeight: 400,
       fontSize: '0.75rem',
       lineHeight: '1rem',
@@ -99,9 +99,18 @@ export const variantDictionary: Record<
     },
     component: 'h2',
   },
+  bodyWebLight: {
+    style: {
+      fontFamily: 'hind_vadodara',
+      fontWeight: 300,
+      fontSize: '1rem',
+      lineHeight: '1.5rem',
+    },
+    component: 'p',
+  },
   bodyWeb: {
     style: {
-      fontFamily: 'hind_vadodarabold',
+      fontFamily: 'hind_vadodara',
       fontWeight: 400,
       fontSize: '1rem',
       lineHeight: '1.5rem',
@@ -110,7 +119,7 @@ export const variantDictionary: Record<
   },
   bodyWebBold: {
     style: {
-      fontFamily: 'hind_vadodarabold',
+      fontFamily: 'hind_vadodara',
       fontWeight: 700,
       fontSize: '1rem',
       lineHeight: '1.5rem',
@@ -119,7 +128,7 @@ export const variantDictionary: Record<
   },
   captionWeb: {
     style: {
-      fontFamily: 'hind_vadodarabold',
+      fontFamily: 'hind_vadodara',
       fontWeight: 400,
       fontSize: '0.75rem',
       lineHeight: '1rem',
@@ -128,7 +137,7 @@ export const variantDictionary: Record<
   },
   textLinkWeb: {
     style: {
-      fontFamily: 'hind_vadodarabold',
+      fontFamily: 'hind_vadodara',
       fontWeight: 400,
       fontSize: '0.75rem',
       lineHeight: '1rem',
@@ -138,7 +147,7 @@ export const variantDictionary: Record<
   },
   textLinkWebBold: {
     style: {
-      fontFamily: 'hind_vadodarabold',
+      fontFamily: 'hind_vadodara',
       fontWeight: 700,
       fontSize: '0.75rem',
       lineHeight: '1rem',
@@ -154,7 +163,7 @@ export const variantDictionary: Record<
   */
   navigationItemWebBold: {
     style: {
-      fontFamily: 'hind_vadodarabold',
+      fontFamily: 'hind_vadodara',
       fontWeight: 700,
       fontSize: '0.875rem',
       lineHeight: '1.5rem',
@@ -163,7 +172,7 @@ export const variantDictionary: Record<
   },
   homeClientsCardHeading: {
     style: {
-      fontFamily: 'hind_vadodarabold',
+      fontFamily: 'hind_vadodara',
       fontWeight: 600,
       fontSize: '3rem',
       lineHeight: '3rem',
@@ -172,7 +181,7 @@ export const variantDictionary: Record<
   },
   homeCardLabel: {
     style: {
-      fontFamily: 'hind_vadodarabold',
+      fontFamily: 'hind_vadodara',
       fontSize: '0.875rem',
       lineHeight: '1.5rem',
     },
@@ -180,7 +189,7 @@ export const variantDictionary: Record<
   },
   homePageNotificationGroupDayTitle: {
     style: {
-      fontFamily: 'hind_vadodarabold',
+      fontFamily: 'hind_vadodara',
       fontWeight: 600,
       fontSize: '0.75rem',
       lineHeight: '1rem',
@@ -189,7 +198,7 @@ export const variantDictionary: Record<
   },
   homePageNotificationTitle: {
     style: {
-      fontFamily: 'hind_vadodarabold',
+      fontFamily: 'hind_vadodara',
       fontSize: '14px',
       lineHeight: '18px',
       textTransform: 'uppercase',
@@ -198,7 +207,7 @@ export const variantDictionary: Record<
   },
   homePageNotificationContent: {
     style: {
-      fontFamily: 'hind_vadodarabold',
+      fontFamily: 'hind_vadodara',
       fontSize: '12px',
       lineHeight: '15px',
     },

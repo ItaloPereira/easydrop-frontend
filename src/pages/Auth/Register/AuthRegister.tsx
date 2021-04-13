@@ -19,31 +19,13 @@ const AuthLogin: FunctionComponent = () => {
     };
   }, [dispatch]);
 
-  const onLogin = ({
-    username,
-    password,
-    rememberUsername,
-  }: {
-    username: string;
-    password: string;
-    rememberUsername: boolean;
-  }) => {
-    dispatch(AuthActions.login({ username, password, rememberUsername }));
+  const onRegister = ({ name, email, whatsapp }: { name: string; email: string; whatsapp: string }) => {
+    // dispatch(AuthActions.login({ username: name, password: email, rememberUsername: true }));
   };
 
-  const onForgotPassword = () => navigate('/auth/forgot-password');
-  const onHelp = () => navigate('/auth/faq');
+  const onLogin = () => navigate('/auth/login');
 
-  return (
-    <AuthFormsLogin
-      isLoading={authLoading}
-      errorMsg={authError}
-      onLogin={onLogin}
-      onForgotPassword={onForgotPassword}
-      onHelp={onHelp}
-      rememberedUserName={window?.localStorage?.getItem('remember-username')}
-    />
-  );
+  return <AuthFormsLogin loading={authLoading} formError={authError} onRegister={onRegister} onLogin={onLogin} />;
 };
 
 export default AuthLogin;

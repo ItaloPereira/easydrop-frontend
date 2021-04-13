@@ -29,7 +29,7 @@ const HomeBarChart: FunctionComponent<Props> = ({ chartData }) => {
   const theme = useTheme();
   const renderTick = ({ x, y, payload }: any) => {
     return (
-      <text fontFamily="hind_vadodarabold" fontSize="12" x={x - 50} y={y} textAnchor="left">
+      <text fontFamily="hind_vadodara" fontSize="12" x={x - 50} y={y} textAnchor="left">
         {helpersFormatters.formatAmountInFull(payload.value)}
       </text>
     );

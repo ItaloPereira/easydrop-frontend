@@ -8,9 +8,10 @@ import EmailIcon from '@material-ui/icons/Email';
 import ErrorIcon from '@material-ui/icons/Error';
 import PersonIcon from '@material-ui/icons/Person';
 import WhatsAppIcon from '@material-ui/icons/WhatsApp';
+import { Alert } from '@material-ui/lab';
 
 import AuthCard from 'components/Auth/Card';
-import Alert from 'components/UI/Alert';
+// import Alert from 'components/UI/Alert';
 import Typography from 'components/UI/Typography';
 import helpersValidates from 'helpers/validates';
 
@@ -39,69 +40,36 @@ const useStyles = makeStyles((theme) => ({
   },
   buttons: {
     display: 'grid',
-    gap: theme.spacing(3),
-  },
-  errorIcon: {
-    color: theme.palette.error.main,
-  },
-  helperTextBox: {
-    display: 'flex',
-    alignItems: 'center',
-
-    '& span': {
-      color: '#E75A5A',
-    },
-
-    '& svg': {
-      fontSize: '1rem',
-      marginRight: '8px',
-    },
-  },
-  helperBox: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    width: 64,
-    margin: '0 auto',
-    cursor: 'pointer',
-
-    '& span': {
-      color: '#0000',
-    },
-
-    '& svg': {
-      color: '#0000',
-      fontSize: '1rem',
-    },
-  },
-  checkbox: {
-    color: '#0000',
-  },
-  visibilityButton: {
-    color: '#0000',
+    gap: theme.spacing(2),
   },
   inputIcon: {
     fontSize: '1.125rem',
   },
+  loginContainer: {
+    textAlign: 'center',
+  },
+  loginButton: {
+    marginLeft: theme.spacing(1),
+    color: theme.palette.primary.main,
+    cursor: 'pointer',
+
+    '&:hover': {
+      textDecoration: 'underline',
+    },
+  },
+  alert: {
+    textAlign: 'left',
+  },
 }));
 
 type Props = {
-  onLogin: (arg: { username: string; password: string; rememberUsername: boolean }) => void;
-  onForgotPassword: () => void;
-  onHelp: () => void;
-  errorMsg?: string;
-  isLoading: boolean;
-  rememberedUserName?: string | null;
+  onRegister: (arg: { name: string; email: string; whatsapp: string }) => void;
+  onLogin: () => void;
+  formError?: string;
+  loading: boolean;
 };
 
-const AuthFormsEmail: FunctionComponent<Props> = ({
-  onLogin,
-  onForgotPassword,
-  onHelp,
-  errorMsg,
-  isLoading = false,
-  rememberedUserName,
-}) => {
+const AuthFormsEmail: FunctionComponent<Props> = ({ onRegister, onLogin, formError, loading = false }) => {
   const classes = useStyles();
 
   const {
@@ -111,13 +79,10 @@ const AuthFormsEmail: FunctionComponent<Props> = ({
   } = useForm();
 
   const onSubmit = (data: RegisterFormData) => {
-    console.log(data);
+    onRegister(data);
   };
 
-  // window.location.href =
-  // 'https://loja-easydrop-1.myshopify.com/admin/oauth/request_grant?client_id=8c80422b07337f3a7cf008939fd52d42&grant_options%5B%5D=per-user&redirect_uri=http://localhost:3000&scope=write_orders%2Cread_customers&state=19239';
-
-  if (isLoading) {
+  if (loading) {
     return (
       <Box display="flex" justifyContent="center" alignSelf="center">
         <CircularProgress color="primary" />
@@ -214,6 +179,10 @@ const AuthFormsEmail: FunctionComponent<Props> = ({
                 control={control}
                 rules={{
                   required: { value: true, message: 'Este campo é obrigatório' },
+                  // pattern: {
+                  //   value: helpersValidates.whatsAppPattern,
+                  //   message: 'Número inválido',
+                  // },
                 }}
                 defaultValue=""
                 render={({ field }) => (
@@ -244,9 +213,15 @@ const AuthFormsEmail: FunctionComponent<Props> = ({
                 )}
               />
             </Box>
-            {errorMsg && (
-              <Alert variant="filled" severity="error" icon={<ErrorIcon />} aria-label="caixa com alerta de erro">
-                <Typography variant="bodyWeb">{errorMsg}</Typography>
+            {formError && (
+              <Alert
+                variant="filled"
+                severity="error"
+                icon={<ErrorIcon />}
+                aria-label="caixa com alerta de erro"
+                className={classes.alert}
+              >
+                {formError}
               </Alert>
             )}
             <Box className={classes.buttons}>
@@ -261,6 +236,15 @@ const AuthFormsEmail: FunctionComponent<Props> = ({
               >
                 Criar conta
               </Button>
+
+              <Box className={classes.loginContainer}>
+                <Typography variant="bodyWebLight" component="span">
+                  Já tem conta?
+                </Typography>
+                <Typography variant="bodyWeb" component="span" className={classes.loginButton} onClick={onLogin}>
+                  Entrar
+                </Typography>
+              </Box>
             </Box>
           </Box>
         </Box>

@@ -16,7 +16,7 @@ export const themeDefault = createMuiTheme({
     },
   },
   typography: {
-    fontFamily: '"hind_vadodaralight"',
+    fontFamily: '"hind_vadodara"',
   },
   shape: {
     borderRadius: 4,
