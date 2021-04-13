@@ -93,7 +93,7 @@ const AuthFormsEmail: FunctionComponent<Props> = ({ onRegister, onLogin, formErr
       <AuthCard>
         <Box className={classes.root}>
           <Box>
-            <Typography variant="subtitleWebBold">Crie sua conta e teste grátis</Typography>
+            <Typography variant="subtitleWebBold">Crie uma conta e teste grátis</Typography>
           </Box>
 
           <Box className={classes.content}>
