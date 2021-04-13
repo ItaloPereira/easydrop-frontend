@@ -209,39 +209,40 @@ const AuthFormsEmail: FunctionComponent<Props> = ({
               </FormControl>
 
               {/* WHATSAPP */}
-              <FormControl fullWidth>
-                <Controller
-                  name="whatsapp"
-                  control={control}
-                  rules={{
-                    required: { value: true, message: 'Este campo é obrigatório' },
-                  }}
-                  defaultValue=""
-                  render={({ field }) => (
-                    <TextField
-                      {...field}
-                      error={Boolean(errors.whatsapp)}
-                      type="whatsapp"
-                      label="Whatsapp"
-                      variant="outlined"
-                      id="login-whatsapp"
-                      autoComplete="whatsapp"
-                      size="small"
-                      helperText={errors.whatsapp && errors.whatsapp.message}
-                      inputProps={{
-                        'aria-label': 'campo de whatsapp',
-                      }}
-                      InputProps={{
-                        startAdornment: (
-                          <InputAdornment position="start">
-                            <WhatsAppIcon className={classes.inputIcon} />
-                          </InputAdornment>
-                        ),
-                      }}
-                    />
-                  )}
-                />
-              </FormControl>
+              <Controller
+                name="whatsapp"
+                control={control}
+                rules={{
+                  required: { value: true, message: 'Este campo é obrigatório' },
+                }}
+                defaultValue=""
+                render={({ field }) => (
+                  <InputMask mask="(99) 99999-9999" {...field}>
+                    {(inputMaskProps: any) => (
+                      <TextField
+                        {...inputMaskProps}
+                        error={Boolean(errors.whatsapp)}
+                        label="Whatsapp"
+                        variant="outlined"
+                        id="login-whatsapp"
+                        autoComplete="whatsapp"
+                        size="small"
+                        helperText={errors.whatsapp && errors.whatsapp.message}
+                        inputProps={{
+                          'aria-label': 'campo de whatsapp',
+                        }}
+                        InputProps={{
+                          startAdornment: (
+                            <InputAdornment position="start">
+                              <WhatsAppIcon className={classes.inputIcon} />
+                            </InputAdornment>
+                          ),
+                        }}
+                      />
+                    )}
+                  </InputMask>
+                )}
+              />
             </Box>
             {errorMsg && (
               <Alert variant="filled" severity="error" icon={<ErrorIcon />} aria-label="caixa com alerta de erro">
