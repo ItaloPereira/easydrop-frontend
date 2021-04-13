@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'grid',
     gap: theme.spacing(3),
     padding: theme.spacing(3),
-    border: `1px solid ${theme.palette.carbon[10]}`,
+    // border: `1px solid ${theme.palette.carbon[10]}`,
     background: theme.palette.common.white,
     borderRadius: 8,
     width: '90%',

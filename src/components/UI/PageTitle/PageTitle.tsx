@@ -34,14 +34,14 @@ const useStyles = makeStyles((theme) => ({
     alignSelf: 'flex-end',
   },
   notificationButton: {
-    background: theme.palette.carbon[100],
+    // background: theme.palette.carbon[100],
     width: 32,
     height: 32,
     '&:hover': {
-      background: theme.palette.carbon[100],
+      // background: theme.palette.carbon[100],
     },
     '& svg': {
-      color: theme.palette.marble[100],
+      // color: theme.palette.marble[100],
     },
   },
 }));

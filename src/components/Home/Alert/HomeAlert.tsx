@@ -24,9 +24,7 @@ export const SuccessAlert = withStyles((theme) => ({
   root: {
     backgroundColor: theme.palette.success.dark,
 
-    '& p': {
-      color: theme.palette.marble[100],
-    },
+    '& p': {},
   },
 }))(CustomAlert);
 
@@ -34,8 +32,6 @@ export const ErrorAlert = withStyles((theme) => ({
   root: {
     backgroundColor: theme.palette.error.main,
 
-    '& p': {
-      color: theme.palette.marble[100],
-    },
+    '& p': {},
   },
 }))(CustomAlert);

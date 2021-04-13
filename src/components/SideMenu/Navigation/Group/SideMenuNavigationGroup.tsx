@@ -19,7 +19,7 @@ type Props = {
 const useStyles = makeStyles((theme) => ({
   subheader: {
     margin: theme.spacing(0, 0, 2, 3),
-    color: theme.palette.carbon[90],
+    // color: theme.palette.carbon[90],
   },
   group: {
     marginBottom: theme.spacing(2),

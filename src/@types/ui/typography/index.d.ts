@@ -17,6 +17,7 @@ declare module '@portal-types/ui/typography' {
     | 'captionWeb'
     | 'textLinkWeb'
     | 'textLinkWebBold'
+    | 'bodyWebLight'
     // tipos nao definidos ainda
     | 'navigationItemWebBold'
     | 'homeClientsCardHeading'

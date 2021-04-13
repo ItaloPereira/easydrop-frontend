@@ -7,7 +7,7 @@ import Typography from 'components/UI/Typography';
 import helpersFormatters from 'helpers/formatters';
 
 const useStyles = makeStyles((theme) => {
-  const { carbon } = theme.palette;
+  // const { carbon } = theme.palette;
   return {
     root: {
       display: 'flex',
@@ -21,11 +21,11 @@ const useStyles = makeStyles((theme) => {
       marginBottom: theme.spacing(1),
     },
     avatarLetters: {
-      color: carbon[60],
+      // color: carbon[60],
       fontSize: '1rem',
     },
     typography: {
-      color: carbon[90],
+      // color: carbon[90],
     },
   };
 });

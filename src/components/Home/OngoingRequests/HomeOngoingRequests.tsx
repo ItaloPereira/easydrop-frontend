@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
   },
   accordionRequest: {
     boxShadow: 'none',
-    border: `1px solid ${theme.palette.carbon[10]}`,
+    // border: `1px solid ${theme.palette.carbon[10]}`,
     '&.Mui-expanded': {
       margin: 0,
     },
@@ -29,10 +29,10 @@ const useStyles = makeStyles((theme) => ({
     marginRight: theme.spacing(1),
   },
   detailsLabel: {
-    color: theme.palette.carbon[60],
+    // color: theme.palette.carbon[60],
   },
   detailsLink: {
-    color: theme.palette.carbon[100],
+    // color: theme.palette.carbon[100],
   },
   listContent: {
     width: '100%',
