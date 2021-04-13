@@ -68,7 +68,7 @@ type Props = {
   loading: boolean;
 };
 
-const AuthFormsEmail: FunctionComponent<Props> = ({ onRegister, onLogin, formError, loading = false }) => {
+const AuthFormsRegister: FunctionComponent<Props> = ({ onRegister, onLogin, formError, loading = false }) => {
   const classes = useStyles();
 
   const {
@@ -252,4 +252,4 @@ const AuthFormsEmail: FunctionComponent<Props> = ({ onRegister, onLogin, formErr
   );
 };
 
-export default AuthFormsEmail;
+export default AuthFormsRegister;
