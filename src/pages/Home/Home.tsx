@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'block',
   },
   notificationButton: {
-    color: theme.palette.carbon[100],
+    // color: theme.palette.carbon[100],
     fontSize: '2rem',
     cursor: 'pointer',
   },
@@ -83,17 +83,17 @@ const useStyles = makeStyles((theme) => ({
   helpIconWarning: {
     marginLeft: theme.spacing(1),
     cursor: 'pointer',
-    color: theme.palette.carbon[35],
+    // color: theme.palette.carbon[35],
   },
   helpIconSuccess: {
     marginLeft: theme.spacing(1),
     cursor: 'pointer',
-    color: theme.palette.marble[60],
+    // color: theme.palette.marble[60],
   },
   helpIconError: {
     marginLeft: theme.spacing(1),
     cursor: 'pointer',
-    color: theme.palette.marble[60],
+    // color: theme.palette.marble[60],
   },
 }));
 

@@ -1,7 +1,6 @@
 import { Navigate, useRoutes } from 'react-router';
 
 import AuthLayout from 'layouts/AuthLayout';
-import ForgotPassword from 'pages/Auth/ForgotPassword';
 import AuthLogin from 'pages/Auth/Login';
 
 const usePublicRoutes = () => {
@@ -17,10 +16,6 @@ const usePublicRoutes = () => {
         {
           path: '/login',
           element: <AuthLogin />,
-        },
-        {
-          path: '/forgot-password',
-          element: <ForgotPassword />,
         },
       ],
     },

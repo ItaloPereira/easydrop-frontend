@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     alignItems: 'center',
     borderRadius: `0 ${theme.shape.borderRadius * 2}px ${theme.shape.borderRadius * 2}px 0`,
-    color: theme.palette.carbon[90],
+    // color: theme.palette.carbon[90],
     marginBottom: theme.spacing(1),
     padding: theme.spacing(0, 2, 0, 3),
     height: 48,
@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
       '&::before': {
         position: 'absolute',
         left: 0,
-        backgroundColor: theme.palette.carbon[90],
+        // backgroundColor: theme.palette.carbon[90],
         width: 4,
         height: 48,
         content: '""',
@@ -41,10 +41,10 @@ const useStyles = makeStyles((theme) => ({
   itemIcon: {
     minWidth: 0,
     marginRight: theme.spacing(1),
-    color: theme.palette.carbon[90],
+    // color: theme.palette.carbon[90],
   },
   typography: {
-    color: theme.palette.carbon[90],
+    // color: theme.palette.carbon[90],
   },
 }));
 

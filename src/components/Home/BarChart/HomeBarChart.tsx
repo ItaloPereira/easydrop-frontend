@@ -8,9 +8,7 @@ import helpersFormatters from 'helpers/formatters';
 // import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer, CartesianGrid } from 'recharts';
 
 const useStyles = makeStyles((theme) => ({
-  legend: {
-    color: theme.palette.carbon[100],
-  },
+  legend: {},
   badge: {
     width: 8,
     height: 8,
@@ -31,14 +29,7 @@ const HomeBarChart: FunctionComponent<Props> = ({ chartData }) => {
   const theme = useTheme();
   const renderTick = ({ x, y, payload }: any) => {
     return (
-      <text
-        fontFamily="hind_vadodarabold"
-        fontSize="12"
-        x={x - 50}
-        y={y}
-        fill={theme.palette.carbon[60]}
-        textAnchor="left"
-      >
+      <text fontFamily="hind_vadodarabold" fontSize="12" x={x - 50} y={y} textAnchor="left">
         {helpersFormatters.formatAmountInFull(payload.value)}
       </text>
     );
@@ -55,7 +46,6 @@ const HomeBarChart: FunctionComponent<Props> = ({ chartData }) => {
     >
       <Box display="flex" flexDirection="row" width="100%" justifyContent="flex-end" alignItems="start" mt={-6}>
         <Box display="flex" alignItems="center" marginRight={4}>
-          <span className={classes.badge} style={{ backgroundColor: theme.palette.carbon[20] }} />
           <Typography variant="captionWeb">{chartData.pastYearLabel}</Typography>
         </Box>
         <Box display="flex" alignItems="center">

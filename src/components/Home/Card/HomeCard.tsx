@@ -35,7 +35,6 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
 
     '& svg': {
-      color: theme.palette.carbon[20],
       width: 18,
       height: 18,
     },

@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(0, 2, 0, 0),
   },
   versionNumber: {
-    color: theme.palette.carbon[35],
+    // color: theme.palette.carbon[35],
   },
   sideNavContainer: {
     width: SIDE_NAV_WIDTH,
@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
   contentContainer: {
     display: 'flex',
     flexGrow: 1,
-    backgroundColor: theme.palette.marble[100],
+    // backgroundColor: theme.palette.marble[100],
     borderTopLeftRadius: theme.shape.borderRadius * 5,
     padding: theme.spacing(5, 4),
     marginLeft: SIDE_NAV_WIDTH,

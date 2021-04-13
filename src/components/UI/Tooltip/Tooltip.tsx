@@ -4,7 +4,7 @@ import { variantDictionary } from 'components/UI/Typography/constants';
 
 const CustomTooltip = withStyles((theme) => ({
   tooltip: {
-    backgroundColor: theme.palette.secondarySurfaces.carbonLight,
+    // backgroundColor: theme.palette.secondarySurfaces.carbonLight,
     padding: theme.spacing(1),
     ...variantDictionary.captionWeb.style,
   },
@@ -12,7 +12,7 @@ const CustomTooltip = withStyles((theme) => ({
     zIndex: 1200,
   },
   arrow: {
-    color: theme.palette.secondarySurfaces.carbonLight,
+    // color: theme.palette.secondarySurfaces.carbonLight,
   },
 }))(Tooltip);
 

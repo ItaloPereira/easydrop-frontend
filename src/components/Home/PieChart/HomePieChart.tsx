@@ -37,9 +37,9 @@ const HomePieChart: FunctionComponent<Props> = ({ chartData }) => {
   const theme = useTheme();
   const COLORS = [
     theme.palette.primary.main,
-    theme.palette.carbon[100],
-    theme.palette.carbon[60],
-    theme.palette.carbon[20],
+    // theme.palette.carbon[100],
+    // theme.palette.carbon[60],
+    // theme.palette.carbon[20],
   ];
   const onPieEnter = useCallback(
     (_, index) => {

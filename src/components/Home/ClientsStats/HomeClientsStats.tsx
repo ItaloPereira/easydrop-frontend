@@ -33,7 +33,6 @@ const HomeClientsStats: FunctionComponent<Props> = ({ clientsStatsData }) => {
       </Box>
       <Box display="flex" flexDirection="row" justifyContent="space-between" alignItems="center" mt={7}>
         <Box display="flex" alignItems="center">
-          <span className={classes.badge} style={{ backgroundColor: theme.palette.surfaceColors.infoMedium }} />
           <Typography variant="captionWeb">
             <strong>{clientsStatsData.underAnalysis}</strong> em análise
           </Typography>
@@ -51,7 +50,6 @@ const HomeClientsStats: FunctionComponent<Props> = ({ clientsStatsData }) => {
           </Typography>
         </Box>
         <Box display="flex" alignItems="center">
-          <span className={classes.badge} style={{ backgroundColor: theme.palette.carbon[35] }} />
           <Typography variant="captionWeb">
             <strong>{clientsStatsData.cancelled}</strong> cancelados
           </Typography>

@@ -18,7 +18,7 @@ const CustomAlert = withStyles((theme) => ({
     padding: 0,
 
     '& p': {
-      color: theme.palette.marble[100],
+      // color: theme.palette.marble[100],
     },
   },
 }))(Alert);
