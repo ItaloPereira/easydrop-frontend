@@ -8,4 +8,5 @@ export const brandVariants = {
     100: `${brandColors.coal}FF`,
     60: `${brandColors.coal}99`,
   },
+  primaryLight: `${brandColors.primary}B3`,
 };

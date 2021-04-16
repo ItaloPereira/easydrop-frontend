@@ -36,7 +36,7 @@ type Props = {
 const SideMenuFooter: FunctionComponent<Props> = ({ onLogout, title }) => {
   const classes = useStyles();
   return (
-    <Box width={224} height={48} display="flex">
+    <Box width={224} height={48} display="flex" marginTop="auto">
       <Link href="/" className={classes.linkFooter} onClick={onLogout} aria-label="link para desconectar do portal">
         <PowerSettingsNewIcon className={classes.footerIcon} fontSize="small" />
         <Typography variant="navigationItemWebBold">{title}</Typography>

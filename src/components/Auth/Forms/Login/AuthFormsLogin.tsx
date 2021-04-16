@@ -61,6 +61,14 @@ const useStyles = makeStyles((theme) => ({
   alert: {
     textAlign: 'left',
   },
+  submitButton: {
+    '&:disabled': {
+      padding: theme.spacing(1.625, 4),
+    },
+  },
+  loader: {
+    color: theme.palette.common.white,
+  },
 }));
 
 type Props = {
@@ -88,13 +96,6 @@ const AuthFormsLogin: FunctionComponent<Props> = ({ onRegister, onLogin, formErr
     onLogin(data);
   };
 
-  if (loading) {
-    return (
-      <Box display="flex" justifyContent="center" alignSelf="center">
-        <CircularProgress color="primary" />
-      </Box>
-    );
-  }
   return (
     <form onSubmit={handleSubmit(onSubmit)} noValidate className={classes.form}>
       <AuthCard>
@@ -129,6 +130,7 @@ const AuthFormsLogin: FunctionComponent<Props> = ({ onRegister, onLogin, formErr
                       autoComplete="email"
                       autoFocus
                       size="small"
+                      disabled={loading}
                       helperText={errors.email && errors.email.message}
                       inputProps={{
                         'aria-label': 'campo de email',
@@ -164,6 +166,7 @@ const AuthFormsLogin: FunctionComponent<Props> = ({ onRegister, onLogin, formErr
                       id="login-password"
                       autoComplete="password"
                       size="small"
+                      disabled={loading}
                       helperText={errors.password && errors.password.message}
                       inputProps={{
                         'aria-label': 'campo de senha',
@@ -215,8 +218,10 @@ const AuthFormsLogin: FunctionComponent<Props> = ({ onRegister, onLogin, formErr
                 color="primary"
                 size="large"
                 aria-label="botão para acessar a conta"
+                disabled={loading}
+                classes={{ containedPrimary: classes.submitButton }}
               >
-                Entrar
+                {loading ? <CircularProgress size="1rem" className={classes.loader} /> : 'Entrar'}
               </Button>
 
               <Box className={classes.loginContainer}>

@@ -2,7 +2,7 @@ import { createReducer } from '@reduxjs/toolkit';
 
 import { Loading } from 'helpers/enums';
 
-import { login, logout } from './actions';
+import { register, login, logout } from './actions';
 import { AuthState } from './types';
 
 export const authInitialState: AuthState = {
@@ -11,17 +11,24 @@ export const authInitialState: AuthState = {
 
 export default createReducer(authInitialState, (builder) =>
   builder
+    .addCase(register.pending, (state) => {
+      state.loading = Loading.PENDING;
+    })
+    .addCase(register.fulfilled, (state, action) => {
+      state.loading = Loading.IDLE;
+      state.data = action.payload.data;
+      state.error = undefined;
+    })
+    .addCase(register.rejected, (state) => {
+      state.loading = Loading.IDLE;
+      state.error = 'Erro no registro';
+    })
     .addCase(login.pending, (state) => {
       state.loading = Loading.PENDING;
     })
     .addCase(login.fulfilled, (state, action) => {
       state.loading = Loading.IDLE;
       state.data = action.payload.data;
-      if (action.payload.rememberInfo && window.localStorage) {
-        window.localStorage.setItem('remember-username', action.payload.rememberInfo.username);
-      } else if (!action.payload.rememberInfo && window.localStorage) {
-        window.localStorage.removeItem('remember-username');
-      }
       state.error = undefined;
     })
     .addCase(login.rejected, (state) => {

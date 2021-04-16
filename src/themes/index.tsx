@@ -6,6 +6,7 @@ export const themeDefault = createMuiTheme({
   palette: {
     primary: {
       main: brandColors.primary,
+      light: brandVariants.primaryLight,
     },
     coal: brandVariants.coal,
     common: {
@@ -26,6 +27,13 @@ export const themeDefault = createMuiTheme({
           '& .MuiInputAdornment-positionStart svg': {
             color: brandColors.primary,
           },
+        },
+      },
+    },
+    MuiButton: {
+      containedPrimary: {
+        '&.Mui-disabled': {
+          backgroundColor: brandVariants.primaryLight,
         },
       },
     },

@@ -33,11 +33,7 @@ const SideMenu: FunctionComponent = () => {
   return (
     <Box className={classes.root}>
       {/* <img src={} className={classes.logoImage} alt=" dashboard logo" /> */}
-      <SideMenuUserArea
-        userName={authData.name}
-        organizationName={authData.businessName}
-        organizationDocument={authData.documentNumber}
-      />
+      <SideMenuUserArea userName={authData.name} organizationName="Life Hack" organizationDocument="23424242424234" />
       <SideMenuNavigation />
       <SideMenuFooter title="Sair da Conta" onLogout={() => dispatch(AuthActions.logout())} />
     </Box>

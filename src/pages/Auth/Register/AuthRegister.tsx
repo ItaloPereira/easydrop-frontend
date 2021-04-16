@@ -7,6 +7,13 @@ import AuthFormsRegister from 'components/Auth/Forms/Register';
 import { useAppDispatch } from 'hooks/redux';
 import { AuthActions, AuthSelectors } from 'store/reducers/auth';
 
+export type RegisterData = {
+  name: string;
+  email: string;
+  whatsapp: string;
+  password: string;
+};
+
 const AuthLogin: FunctionComponent = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
@@ -19,8 +26,8 @@ const AuthLogin: FunctionComponent = () => {
     };
   }, [dispatch]);
 
-  const onRegister = ({ name, email, whatsapp }: { name: string; email: string; whatsapp: string }) => {
-    // dispatch(AuthActions.login({ username: name, password: email, rememberUsername: true }));
+  const onRegister = (registerData: RegisterData) => {
+    dispatch(AuthActions.register(registerData));
   };
 
   const onLogin = () => navigate('/auth/login');

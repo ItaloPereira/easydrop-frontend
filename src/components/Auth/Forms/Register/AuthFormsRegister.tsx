@@ -63,6 +63,14 @@ const useStyles = makeStyles((theme) => ({
   alert: {
     textAlign: 'left',
   },
+  submitButton: {
+    '&:disabled': {
+      padding: theme.spacing(1.625, 4),
+    },
+  },
+  loader: {
+    color: theme.palette.common.white,
+  },
 }));
 
 type Props = {
@@ -92,13 +100,6 @@ const AuthFormsRegister: FunctionComponent<Props> = ({ onRegister, onLogin, form
     onRegister(data);
   };
 
-  if (loading) {
-    return (
-      <Box display="flex" justifyContent="center" alignSelf="center">
-        <CircularProgress color="primary" />
-      </Box>
-    );
-  }
   return (
     <form onSubmit={handleSubmit(onSubmit)} noValidate className={classes.form}>
       <AuthCard>
@@ -128,6 +129,7 @@ const AuthFormsRegister: FunctionComponent<Props> = ({ onRegister, onLogin, form
                       autoComplete="name"
                       autoFocus
                       size="small"
+                      disabled={loading}
                       helperText={errors.name && errors.name.message}
                       inputProps={{
                         'aria-label': 'campo de nome',
@@ -167,6 +169,7 @@ const AuthFormsRegister: FunctionComponent<Props> = ({ onRegister, onLogin, form
                       id="register-email"
                       autoComplete="email"
                       size="small"
+                      disabled={loading}
                       helperText={errors.email && errors.email.message}
                       inputProps={{
                         'aria-label': 'campo de email',
@@ -196,7 +199,7 @@ const AuthFormsRegister: FunctionComponent<Props> = ({ onRegister, onLogin, form
                 }}
                 defaultValue=""
                 render={({ field }) => (
-                  <InputMask mask="(99) 99999-9999" {...field}>
+                  <InputMask mask="(99) 99999-9999" {...field} disabled={loading}>
                     {(inputMaskProps: any) => (
                       <TextField
                         {...inputMaskProps}
@@ -243,6 +246,7 @@ const AuthFormsRegister: FunctionComponent<Props> = ({ onRegister, onLogin, form
                       id="register-password"
                       autoComplete="password"
                       size="small"
+                      disabled={loading}
                       helperText={errors.password && errors.password.message}
                       inputProps={{
                         'aria-label': 'campo de senha',
@@ -293,6 +297,7 @@ const AuthFormsRegister: FunctionComponent<Props> = ({ onRegister, onLogin, form
                       variant="outlined"
                       id="register-confirm-password"
                       size="small"
+                      disabled={loading}
                       helperText={errors.confirmPassword && errors.confirmPassword.message}
                       inputProps={{
                         'aria-label': 'campo de confirmar senha',
@@ -344,8 +349,10 @@ const AuthFormsRegister: FunctionComponent<Props> = ({ onRegister, onLogin, form
                 color="primary"
                 size="large"
                 aria-label="botão para criar conta"
+                disabled={loading}
+                classes={{ containedPrimary: classes.submitButton }}
               >
-                Experimente grátis
+                {loading ? <CircularProgress size="1rem" className={classes.loader} /> : 'Experimente grátis'}
               </Button>
 
               <Box className={classes.loginContainer}>
