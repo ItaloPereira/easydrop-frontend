@@ -1,11 +1,14 @@
 import type { FunctionComponent } from 'react';
+import { useState } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 
-import { Box, Button, CircularProgress, FormControl, InputAdornment, TextField } from '@material-ui/core';
+import { Box, Button, CircularProgress, FormControl, InputAdornment, TextField, IconButton } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import EmailIcon from '@material-ui/icons/Email';
 import ErrorIcon from '@material-ui/icons/Error';
 import LockIcon from '@material-ui/icons/Lock';
+import VisibilityIcon from '@material-ui/icons/Visibility';
+import VisibilityOffIcon from '@material-ui/icons/VisibilityOff';
 import { Alert } from '@material-ui/lab';
 
 import AuthCard from 'components/Auth/Card';
@@ -41,6 +44,7 @@ const useStyles = makeStyles((theme) => ({
   },
   inputIcon: {
     fontSize: '1.125rem',
+    color: theme.palette.coal[60],
   },
   loginContainer: {
     textAlign: 'center',
@@ -71,9 +75,14 @@ const AuthFormsLogin: FunctionComponent<Props> = ({ onRegister, onLogin, formErr
 
   const {
     control,
+    watch,
     formState: { errors },
     handleSubmit,
   } = useForm();
+
+  const passwordValue = watch('password');
+
+  const [showPassword, setShowPassword] = useState(false);
 
   const onSubmit = (data: LoginFormData) => {
     onLogin(data);
@@ -114,7 +123,7 @@ const AuthFormsLogin: FunctionComponent<Props> = ({ onRegister, onLogin, formErr
                       {...field}
                       error={Boolean(errors.email)}
                       type="email"
-                      label="E-mail"
+                      placeholder="E-mail"
                       variant="outlined"
                       id="login-email"
                       autoComplete="email"
@@ -149,8 +158,8 @@ const AuthFormsLogin: FunctionComponent<Props> = ({ onRegister, onLogin, formErr
                     <TextField
                       {...field}
                       error={Boolean(errors.password)}
-                      type="password"
-                      label="Senha"
+                      type={showPassword ? 'text' : 'password'}
+                      placeholder="Senha"
                       variant="outlined"
                       id="login-password"
                       autoComplete="password"
@@ -163,6 +172,21 @@ const AuthFormsLogin: FunctionComponent<Props> = ({ onRegister, onLogin, formErr
                         startAdornment: (
                           <InputAdornment position="start">
                             <LockIcon className={classes.inputIcon} />
+                          </InputAdornment>
+                        ),
+                        endAdornment: passwordValue && (
+                          <InputAdornment position="end">
+                            <IconButton
+                              aria-label="botão de alternar visibilidade da senha"
+                              onClick={() => setShowPassword(!showPassword)}
+                              size="small"
+                            >
+                              {showPassword ? (
+                                <VisibilityOffIcon fontSize="small" />
+                              ) : (
+                                <VisibilityIcon fontSize="small" />
+                              )}
+                            </IconButton>
                           </InputAdornment>
                         ),
                       }}

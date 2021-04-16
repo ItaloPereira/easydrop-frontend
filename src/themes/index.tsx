@@ -1,15 +1,13 @@
 import { createMuiTheme } from '@material-ui/core/styles';
 
-import { brandColors } from './colors';
+import { brandColors, brandVariants } from './colors';
 
 export const themeDefault = createMuiTheme({
   palette: {
     primary: {
       main: brandColors.primary,
     },
-    coal: {
-      100: '#212121',
-    },
+    coal: brandVariants.coal,
     common: {
       black: '#000',
       white: '#FFF',

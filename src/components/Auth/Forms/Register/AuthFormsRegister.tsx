@@ -1,12 +1,15 @@
-import type { FunctionComponent } from 'react';
+import { FunctionComponent, useState } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import InputMask from 'react-input-mask';
 
-import { Box, Button, CircularProgress, FormControl, InputAdornment, TextField } from '@material-ui/core';
+import { Box, Button, CircularProgress, FormControl, InputAdornment, TextField, IconButton } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import EmailIcon from '@material-ui/icons/Email';
 import ErrorIcon from '@material-ui/icons/Error';
+import LockIcon from '@material-ui/icons/Lock';
 import PersonIcon from '@material-ui/icons/Person';
+import VisibilityIcon from '@material-ui/icons/Visibility';
+import VisibilityOffIcon from '@material-ui/icons/VisibilityOff';
 import WhatsAppIcon from '@material-ui/icons/WhatsApp';
 import { Alert } from '@material-ui/lab';
 
@@ -43,6 +46,7 @@ const useStyles = makeStyles((theme) => ({
   },
   inputIcon: {
     fontSize: '1.125rem',
+    color: theme.palette.coal[60],
   },
   loginContainer: {
     textAlign: 'center',
@@ -62,7 +66,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 type Props = {
-  onRegister: (arg: { name: string; email: string; whatsapp: string }) => void;
+  onRegister: (arg: { name: string; email: string; whatsapp: string; password: string }) => void;
   onLogin: () => void;
   formError?: string;
   loading: boolean;
@@ -73,9 +77,16 @@ const AuthFormsRegister: FunctionComponent<Props> = ({ onRegister, onLogin, form
 
   const {
     control,
+    watch,
     formState: { errors },
     handleSubmit,
   } = useForm();
+
+  const passwordValue = watch('password');
+  const confirmPasswordValue = watch('confirmPassword');
+
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   const onSubmit = (data: RegisterFormData) => {
     onRegister(data);
@@ -111,7 +122,7 @@ const AuthFormsRegister: FunctionComponent<Props> = ({ onRegister, onLogin, form
                     <TextField
                       {...field}
                       error={Boolean(errors.name)}
-                      label="Nome"
+                      placeholder="Nome"
                       variant="outlined"
                       id="register-name"
                       autoComplete="name"
@@ -151,7 +162,7 @@ const AuthFormsRegister: FunctionComponent<Props> = ({ onRegister, onLogin, form
                       {...field}
                       error={Boolean(errors.email)}
                       type="email"
-                      label="E-mail"
+                      placeholder="E-mail"
                       variant="outlined"
                       id="register-email"
                       autoComplete="email"
@@ -190,7 +201,7 @@ const AuthFormsRegister: FunctionComponent<Props> = ({ onRegister, onLogin, form
                       <TextField
                         {...inputMaskProps}
                         error={Boolean(errors.whatsapp)}
-                        label="Whatsapp"
+                        placeholder="Whatsapp"
                         variant="outlined"
                         id="register-whatsapp"
                         autoComplete="whatsapp"
@@ -211,6 +222,107 @@ const AuthFormsRegister: FunctionComponent<Props> = ({ onRegister, onLogin, form
                   </InputMask>
                 )}
               />
+
+              {/* PASSWORD */}
+              <FormControl fullWidth>
+                <Controller
+                  name="password"
+                  control={control}
+                  rules={{
+                    required: { value: true, message: 'Este campo é obrigatório' },
+                    minLength: { value: 6, message: 'Sua senha deve conter no mínimo 6 caracteres.' },
+                  }}
+                  defaultValue=""
+                  render={({ field }) => (
+                    <TextField
+                      {...field}
+                      error={Boolean(errors.password)}
+                      type={showPassword ? 'text' : 'password'}
+                      placeholder="Senha"
+                      variant="outlined"
+                      id="register-password"
+                      autoComplete="password"
+                      size="small"
+                      helperText={errors.password && errors.password.message}
+                      inputProps={{
+                        'aria-label': 'campo de senha',
+                      }}
+                      InputProps={{
+                        startAdornment: (
+                          <InputAdornment position="start">
+                            <LockIcon className={classes.inputIcon} />
+                          </InputAdornment>
+                        ),
+                        endAdornment: passwordValue && (
+                          <InputAdornment position="end">
+                            <IconButton
+                              aria-label="botão de alternar visibilidade da senha"
+                              onClick={() => setShowPassword(!showPassword)}
+                              size="small"
+                            >
+                              {showPassword ? (
+                                <VisibilityOffIcon fontSize="small" />
+                              ) : (
+                                <VisibilityIcon fontSize="small" />
+                              )}
+                            </IconButton>
+                          </InputAdornment>
+                        ),
+                      }}
+                    />
+                  )}
+                />
+              </FormControl>
+
+              {/* CONFIRM PASSWORD */}
+              <FormControl fullWidth>
+                <Controller
+                  name="confirmPassword"
+                  control={control}
+                  rules={{
+                    required: { value: true, message: 'Este campo é obrigatório' },
+                    validate: (value) => (value === passwordValue ? true : 'As senhas não são iguais.'),
+                  }}
+                  defaultValue=""
+                  render={({ field }) => (
+                    <TextField
+                      {...field}
+                      error={Boolean(errors.confirmPassword)}
+                      type={showConfirmPassword ? 'text' : 'password'}
+                      placeholder="Confirmar senha"
+                      variant="outlined"
+                      id="register-confirm-password"
+                      size="small"
+                      helperText={errors.confirmPassword && errors.confirmPassword.message}
+                      inputProps={{
+                        'aria-label': 'campo de confirmar senha',
+                      }}
+                      InputProps={{
+                        startAdornment: (
+                          <InputAdornment position="start">
+                            <LockIcon className={classes.inputIcon} />
+                          </InputAdornment>
+                        ),
+                        endAdornment: confirmPasswordValue && (
+                          <InputAdornment position="end">
+                            <IconButton
+                              aria-label="botão de alternar visibilidade da senha"
+                              onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                              size="small"
+                            >
+                              {showConfirmPassword ? (
+                                <VisibilityOffIcon fontSize="small" />
+                              ) : (
+                                <VisibilityIcon fontSize="small" />
+                              )}
+                            </IconButton>
+                          </InputAdornment>
+                        ),
+                      }}
+                    />
+                  )}
+                />
+              </FormControl>
             </Box>
             {formError && (
               <Alert
@@ -233,7 +345,7 @@ const AuthFormsRegister: FunctionComponent<Props> = ({ onRegister, onLogin, form
                 size="large"
                 aria-label="botão para criar conta"
               >
-                Criar conta
+                Experimente grátis
               </Button>
 
               <Box className={classes.loginContainer}>

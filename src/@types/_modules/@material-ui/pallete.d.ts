@@ -1,5 +1,6 @@
 export interface CoalColor {
   100: string;
+  60: string;
 }
 
 declare module '@material-ui/core/styles/createPalette' {

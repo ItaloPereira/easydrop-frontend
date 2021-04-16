@@ -13,16 +13,5 @@ export const authRequests = {
     });
     return { authData: loginMock.success };
   },
-  forgotPassword: async (email: string) => {
-    try {
-      await client.post(`forgot-password`, {
-        data: {
-          email,
-        },
-      });
-      return true;
-    } catch (err) {
-      return false;
-    }
-  },
+  // register: async (name: string, email: string,)
 };
