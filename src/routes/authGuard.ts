@@ -14,6 +14,7 @@ const idleTimeout = 1000 * 60 * 30;
 
 const AuthGuardian: FunctionComponent<Props> = ({ publicRoutes, privateRoutes }) => {
   const isAuthenticated = useSelector(AuthSelectors.isAuthenticatedSelector);
+  const isRehydrated = useSelector(AuthSelectors.isRehydratedSelector);
   const authData = useSelector(AuthSelectors.authDataSelector);
   const dispatch = useDispatch();
 
@@ -33,6 +34,10 @@ const AuthGuardian: FunctionComponent<Props> = ({ publicRoutes, privateRoutes })
       dispatch(AuthActions.logout());
     },
   });
+
+  if (!isRehydrated) {
+    return null;
+  }
 
   if (isAuthenticated) {
     return privateRoutes;

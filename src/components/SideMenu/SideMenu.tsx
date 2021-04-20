@@ -12,6 +12,7 @@ const useStyles = makeStyles((theme) => {
     root: {
       width: '100%',
       boxShadow: `-2px -1px 13px -3px ${theme.palette.coal[30]}`,
+      backgroundColor: theme.palette.common.white,
     },
     navigationContent: {
       padding: theme.spacing(0, 1),
