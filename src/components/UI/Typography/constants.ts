@@ -213,4 +213,24 @@ export const variantDictionary: Record<
     },
     component: 'p',
   },
+  // -----
+  labelUppercaseMediumBold: {
+    style: {
+      fontFamily: 'hind_vadodara',
+      fontSize: '12px',
+      lineHeight: '16px',
+      textTransform: 'uppercase',
+      fontWeight: 700,
+    },
+    component: 'span',
+  },
+  bodySemibold: {
+    style: {
+      fontFamily: 'hind_vadodara',
+      fontSize: '14px',
+      lineHeight: '18px',
+      fontWeight: 500,
+    },
+    component: 'span',
+  },
 };

@@ -18,8 +18,8 @@ type Props = {
 
 const useStyles = makeStyles((theme) => ({
   subheader: {
-    margin: theme.spacing(0, 0, 2, 3),
-    // color: theme.palette.carbon[90],
+    marginBottom: theme.spacing(1),
+    display: 'block',
   },
   group: {
     marginBottom: theme.spacing(2),
@@ -31,7 +31,7 @@ const SideMenuNavigationGroup: FunctionComponent<Props> = ({ routes, groupName, 
   return (
     <>
       <List disablePadding className={classes.group}>
-        <Typography variant="captionWeb" component="header" className={classes.subheader}>
+        <Typography variant="labelUppercaseMediumBold" className={classes.subheader}>
           {groupName}
         </Typography>
         {routes.map((route) => (

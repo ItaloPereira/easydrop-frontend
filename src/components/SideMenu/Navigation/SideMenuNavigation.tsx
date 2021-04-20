@@ -10,7 +10,7 @@ import SideMenuNavigationGroup from './Group/SideMenuNavigationGroup';
 const SideMenuNavigation: FunctionComponent = () => {
   const location = useLocation();
   return (
-    <Box component="nav" mt={1} display="grid">
+    <Box component="nav">
       {groupedRoutes.map((group) => (
         <SideMenuNavigationGroup
           key={group.groupName}
