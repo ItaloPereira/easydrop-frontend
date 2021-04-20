@@ -9,20 +9,26 @@ export type AuthState = {
 export type AuthData = {
   token: string;
   name: string;
-  documentNumber: string;
-  businessName: string;
 };
 
 export type LoginAction = {
   input: {
-    username: string;
+    email: string;
     password: string;
-    rememberUsername: boolean;
   };
   output: {
     data?: AuthData;
-    rememberInfo?: {
-      username: string;
-    };
+  };
+};
+
+export type RegisterAction = {
+  input: {
+    name: string;
+    email: string;
+    password: string;
+    whatsapp: string;
+  };
+  output: {
+    data?: AuthData;
   };
 };

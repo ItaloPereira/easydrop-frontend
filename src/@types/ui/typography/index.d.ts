@@ -24,7 +24,10 @@ declare module '@portal-types/ui/typography' {
     | 'homeCardLabel'
     | 'homePageNotificationTitle'
     | 'homePageNotificationContent'
-    | 'homePageNotificationGroupDayTitle';
+    | 'homePageNotificationGroupDayTitle'
+    // -----
+    | 'labelUppercaseMediumBold'
+    | 'bodySemibold';
 
   export type TypographyProps = Omit<MuiTypographyProps, 'variant'> & {
     component?: React.ElementType;

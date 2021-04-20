@@ -1,11 +1,14 @@
 import type { FunctionComponent } from 'react';
+import { useState } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 
-import { Box, Button, CircularProgress, FormControl, InputAdornment, TextField } from '@material-ui/core';
+import { Box, Button, CircularProgress, FormControl, InputAdornment, TextField, IconButton } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import EmailIcon from '@material-ui/icons/Email';
 import ErrorIcon from '@material-ui/icons/Error';
 import LockIcon from '@material-ui/icons/Lock';
+import VisibilityIcon from '@material-ui/icons/Visibility';
+import VisibilityOffIcon from '@material-ui/icons/VisibilityOff';
 import { Alert } from '@material-ui/lab';
 
 import AuthCard from 'components/Auth/Card';
@@ -41,6 +44,7 @@ const useStyles = makeStyles((theme) => ({
   },
   inputIcon: {
     fontSize: '1.125rem',
+    color: theme.palette.coal[60],
   },
   loginContainer: {
     textAlign: 'center',
@@ -57,6 +61,14 @@ const useStyles = makeStyles((theme) => ({
   alert: {
     textAlign: 'left',
   },
+  submitButton: {
+    '&:disabled': {
+      padding: theme.spacing(1.625, 4),
+    },
+  },
+  loader: {
+    color: theme.palette.common.white,
+  },
 }));
 
 type Props = {
@@ -71,21 +83,19 @@ const AuthFormsLogin: FunctionComponent<Props> = ({ onRegister, onLogin, formErr
 
   const {
     control,
+    watch,
     formState: { errors },
     handleSubmit,
   } = useForm();
+
+  const passwordValue = watch('password');
+
+  const [showPassword, setShowPassword] = useState(false);
 
   const onSubmit = (data: LoginFormData) => {
     onLogin(data);
   };
 
-  if (loading) {
-    return (
-      <Box display="flex" justifyContent="center" alignSelf="center">
-        <CircularProgress color="primary" />
-      </Box>
-    );
-  }
   return (
     <form onSubmit={handleSubmit(onSubmit)} noValidate className={classes.form}>
       <AuthCard>
@@ -114,12 +124,13 @@ const AuthFormsLogin: FunctionComponent<Props> = ({ onRegister, onLogin, formErr
                       {...field}
                       error={Boolean(errors.email)}
                       type="email"
-                      label="E-mail"
+                      placeholder="E-mail"
                       variant="outlined"
                       id="login-email"
                       autoComplete="email"
                       autoFocus
                       size="small"
+                      disabled={loading}
                       helperText={errors.email && errors.email.message}
                       inputProps={{
                         'aria-label': 'campo de email',
@@ -149,12 +160,13 @@ const AuthFormsLogin: FunctionComponent<Props> = ({ onRegister, onLogin, formErr
                     <TextField
                       {...field}
                       error={Boolean(errors.password)}
-                      type="password"
-                      label="Senha"
+                      type={showPassword ? 'text' : 'password'}
+                      placeholder="Senha"
                       variant="outlined"
                       id="login-password"
                       autoComplete="password"
                       size="small"
+                      disabled={loading}
                       helperText={errors.password && errors.password.message}
                       inputProps={{
                         'aria-label': 'campo de senha',
@@ -163,6 +175,21 @@ const AuthFormsLogin: FunctionComponent<Props> = ({ onRegister, onLogin, formErr
                         startAdornment: (
                           <InputAdornment position="start">
                             <LockIcon className={classes.inputIcon} />
+                          </InputAdornment>
+                        ),
+                        endAdornment: passwordValue && (
+                          <InputAdornment position="end">
+                            <IconButton
+                              aria-label="botão de alternar visibilidade da senha"
+                              onClick={() => setShowPassword(!showPassword)}
+                              size="small"
+                            >
+                              {showPassword ? (
+                                <VisibilityOffIcon fontSize="small" />
+                              ) : (
+                                <VisibilityIcon fontSize="small" />
+                              )}
+                            </IconButton>
                           </InputAdornment>
                         ),
                       }}
@@ -191,8 +218,10 @@ const AuthFormsLogin: FunctionComponent<Props> = ({ onRegister, onLogin, formErr
                 color="primary"
                 size="large"
                 aria-label="botão para acessar a conta"
+                disabled={loading}
+                classes={{ containedPrimary: classes.submitButton }}
               >
-                Entrar
+                {loading ? <CircularProgress size="1rem" className={classes.loader} /> : 'Entrar'}
               </Button>
 
               <Box className={classes.loginContainer}>

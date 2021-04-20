@@ -1,8 +1,9 @@
 import { Outlet } from 'react-router-dom';
 
-import { Box, makeStyles, Typography } from '@material-ui/core';
+import { Box, makeStyles } from '@material-ui/core';
 
 import SideMenu from 'components/SideMenu';
+import Typography from 'components/UI/Typography';
 
 const SIDE_NAV_WIDTH = '256px';
 
@@ -20,9 +21,11 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     height: '40px',
     padding: theme.spacing(0, 2, 0, 0),
-  },
-  versionNumber: {
-    // color: theme.palette.carbon[35],
+    backgroundColor: theme.palette.primary.main,
+
+    '& span': {
+      color: theme.palette.common.white,
+    },
   },
   sideNavContainer: {
     width: SIDE_NAV_WIDTH,
@@ -33,7 +36,6 @@ const useStyles = makeStyles((theme) => ({
   contentContainer: {
     display: 'flex',
     flexGrow: 1,
-    // backgroundColor: theme.palette.marble[100],
     borderTopLeftRadius: theme.shape.borderRadius * 5,
     padding: theme.spacing(5, 4),
     marginLeft: SIDE_NAV_WIDTH,
@@ -41,17 +43,17 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const MainLayout = () => {
-  const styles = useStyles();
+  const classes = useStyles();
   return (
-    <Box className={styles.container}>
-      <Box className={styles.versionContainer}>
-        <Typography className={styles.versionNumber}>v.0.0.0</Typography>
+    <Box className={classes.container}>
+      <Box className={classes.versionContainer}>
+        <Typography variant="bodySemibold">v.0.1</Typography>
       </Box>
       <Box display="flex" flexGrow={1}>
-        <Box className={styles.sideNavContainer}>
+        <Box className={classes.sideNavContainer}>
           <SideMenu />
         </Box>
-        <Box className={styles.contentContainer}>
+        <Box className={classes.contentContainer}>
           <Outlet />
         </Box>
       </Box>

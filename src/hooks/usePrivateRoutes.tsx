@@ -3,11 +3,9 @@ import { Link } from 'react-router-dom';
 
 import { Routes } from '@portal-types/routes';
 
-import GroupIcon from '@material-ui/icons/Group';
-import HelpIcon from '@material-ui/icons/Help';
-import HomeIcon from '@material-ui/icons/Home';
-import FinnanceIcon from '@material-ui/icons/MonetizationOn';
-import PersonIcon from '@material-ui/icons/Person';
+import ChatBubbleIcon from '@material-ui/icons/ChatBubble';
+import SettingsInputComponentIcon from '@material-ui/icons/SettingsInputComponent';
+import WhatsAppIcon from '@material-ui/icons/WhatsApp';
 
 import MainLayout from 'layouts/MainLayout';
 import HomePage from 'pages/Home';
@@ -33,20 +31,12 @@ const usePrivateRoutes = () =>
           element: <HomePage />,
         },
         {
-          path: '/clients',
-          element: <NotFound title="Carteira de clientes" />,
+          path: '/integrations',
+          element: <NotFound title="Integrações" />,
         },
         {
-          path: '/finnance',
-          element: <NotFound title="Financeiro" />,
-        },
-        {
-          path: '/my-account',
-          element: <NotFound title="Minha conta" />,
-        },
-        {
-          path: '/help',
-          element: <NotFound title="Ajuda" />,
+          path: '/messages',
+          element: <NotFound title="Mensagens" />,
         },
       ],
     },
@@ -64,38 +54,21 @@ export const groupedRoutes: Array<GroupedRoutes> = [
     routes: [
       {
         path: '/',
-        title: 'Início',
-        icon: HomeIcon,
+        title: 'WhatsApp',
+        icon: WhatsAppIcon,
         element: <HomePage />,
       },
       {
-        path: '/clients',
-        title: 'Carteira de clientes',
-        icon: GroupIcon,
-        element: <NotFound title="Carteira de clientes" />,
+        path: '/messages',
+        title: 'Mensagens',
+        icon: ChatBubbleIcon,
+        element: <p>Mensagens</p>,
       },
       {
-        path: '/finnance',
-        title: 'Financeiro',
-        icon: FinnanceIcon,
-        element: <NotFound title="Financeiro" />,
-      },
-    ],
-  },
-  {
-    groupName: 'Outros',
-    routes: [
-      {
-        path: '/my-account',
-        title: 'Minha conta',
-        icon: PersonIcon,
-        element: <NotFound title="Minha conta" />,
-      },
-      {
-        path: '/help',
-        title: 'Ajuda',
-        icon: HelpIcon,
-        element: <NotFound title="Ajuda" />,
+        path: '/integrations',
+        title: 'Integrações',
+        icon: SettingsInputComponentIcon,
+        element: <p>Integrações</p>,
       },
     ],
   },

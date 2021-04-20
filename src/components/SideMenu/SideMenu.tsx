@@ -1,45 +1,42 @@
 import type { FunctionComponent } from 'react';
-import { useSelector } from 'react-redux';
 
 import { Box } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
-import { useAppDispatch } from 'hooks/redux';
-import { AuthActions, AuthSelectors } from 'store/reducers/auth';
+import EasydropLogo from 'assets/images/easydrop.png';
 
-import SideMenuFooter from './Footer';
 import SideMenuNavigation from './Navigation';
-import SideMenuUserArea from './UserArea';
 
 const useStyles = makeStyles((theme) => {
   return {
     root: {
       width: '100%',
-      display: 'grid',
-      gap: theme.spacing(5),
-      gridTemplateRows: '22px 90px auto 96px',
+      boxShadow: `-2px -1px 13px -3px ${theme.palette.coal[30]}`,
+      backgroundColor: theme.palette.common.white,
     },
-    logoImage: {
-      margin: '0 auto',
+    navigationContent: {
+      padding: theme.spacing(0, 1),
+    },
+    headerLogo: {
+      display: 'block',
+      width: 175,
+      height: 49,
+      margin: `${theme.spacing(4)}px auto`,
     },
   };
 });
 
 const SideMenu: FunctionComponent = () => {
   const classes = useStyles();
-  const dispatch = useAppDispatch();
-  const authData = useSelector(AuthSelectors.authDataSelector)!;
 
   return (
     <Box className={classes.root}>
-      {/* <img src={} className={classes.logoImage} alt=" dashboard logo" /> */}
-      <SideMenuUserArea
-        userName={authData.name}
-        organizationName={authData.businessName}
-        organizationDocument={authData.documentNumber}
-      />
-      <SideMenuNavigation />
-      <SideMenuFooter title="Sair da Conta" onLogout={() => dispatch(AuthActions.logout())} />
+      <Box component="h1" my={0}>
+        <img src={EasydropLogo} alt="Easydrop" className={classes.headerLogo} />
+      </Box>
+      <Box className={classes.navigationContent}>
+        <SideMenuNavigation />
+      </Box>
     </Box>
   );
 };

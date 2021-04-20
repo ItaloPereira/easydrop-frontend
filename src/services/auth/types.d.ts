@@ -1,10 +1,8 @@
 export type LoginActionResponseBody = LoginRequestSuccess & LoginRequestError;
 
-type LoginRequestSuccess = {
+export type LoginRequestSuccess = {
   token: string;
   name: string;
-  documentNumber: string;
-  businessName: string;
 };
 
 type LoginRequestError = {

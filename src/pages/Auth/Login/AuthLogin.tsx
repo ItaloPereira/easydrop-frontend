@@ -22,7 +22,7 @@ const AuthLogin: FunctionComponent = () => {
   const onRegister = () => navigate('/auth/register');
 
   const onLogin = ({ email, password }: { email: string; password: string }) => {
-    // dispatch(AuthActions.login({ username: name, password: email, rememberUsername: true }));
+    dispatch(AuthActions.login({ email, password }));
   };
 
   return <AuthFormsLogin loading={authLoading} formError={authError} onRegister={onRegister} onLogin={onLogin} />;
