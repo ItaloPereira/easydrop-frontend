@@ -7,7 +7,7 @@ const login = (email: string, password: string): Promise<LoginRequestSuccess> =>
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve(loginMock.success);
-    }, 10000);
+    }, 1000);
   });
 };
 
@@ -15,7 +15,7 @@ const register = (name: string, email: string, whatsapp: string, password: strin
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve(loginMock.success);
-    }, 10000);
+    }, 1000);
   });
 };
 

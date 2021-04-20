@@ -3,6 +3,8 @@ import type { FunctionComponent } from 'react';
 import { Box } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
+import EasydropLogo from 'assets/images/easydrop.png';
+
 import SideMenuNavigation from './Navigation';
 
 const useStyles = makeStyles((theme) => {
@@ -14,6 +16,12 @@ const useStyles = makeStyles((theme) => {
     navigationContent: {
       padding: theme.spacing(0, 1),
     },
+    headerLogo: {
+      display: 'block',
+      width: 175,
+      height: 49,
+      margin: `${theme.spacing(4)}px auto`,
+    },
   };
 });
 
@@ -22,6 +30,9 @@ const SideMenu: FunctionComponent = () => {
 
   return (
     <Box className={classes.root}>
+      <Box component="h1" my={0}>
+        <img src={EasydropLogo} alt="Easydrop" className={classes.headerLogo} />
+      </Box>
       <Box className={classes.navigationContent}>
         <SideMenuNavigation />
       </Box>

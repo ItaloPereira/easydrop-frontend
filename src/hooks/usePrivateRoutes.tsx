@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import { Routes } from '@portal-types/routes';
 
-import HomeIcon from '@material-ui/icons/Home';
+import ChatBubbleIcon from '@material-ui/icons/ChatBubble';
 import SettingsInputComponentIcon from '@material-ui/icons/SettingsInputComponent';
 import WhatsAppIcon from '@material-ui/icons/WhatsApp';
 
@@ -34,6 +34,10 @@ const usePrivateRoutes = () =>
           path: '/integrations',
           element: <NotFound title="Integrações" />,
         },
+        {
+          path: '/messages',
+          element: <NotFound title="Mensagens" />,
+        },
       ],
     },
     { path: '/auth/*', element: <Navigate to="/" replace /> },
@@ -53,6 +57,12 @@ export const groupedRoutes: Array<GroupedRoutes> = [
         title: 'WhatsApp',
         icon: WhatsAppIcon,
         element: <HomePage />,
+      },
+      {
+        path: '/messages',
+        title: 'Mensagens',
+        icon: ChatBubbleIcon,
+        element: <p>Mensagens</p>,
       },
       {
         path: '/integrations',
