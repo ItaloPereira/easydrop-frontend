@@ -9,6 +9,7 @@ import WhatsAppIcon from '@material-ui/icons/WhatsApp';
 
 import MainLayout from 'layouts/MainLayout';
 import HomePage from 'pages/Home';
+import IntegrationsPage from 'pages/Integrations';
 
 const NotFound = ({ title }: { title: string }) => {
   return (
@@ -32,7 +33,7 @@ const usePrivateRoutes = () =>
         },
         {
           path: '/integrations',
-          element: <NotFound title="Integrações" />,
+          element: <IntegrationsPage />,
         },
         {
           path: '/messages',
@@ -68,7 +69,7 @@ export const groupedRoutes: Array<GroupedRoutes> = [
         path: '/integrations',
         title: 'Integrações',
         icon: SettingsInputComponentIcon,
-        element: <p>Integrações</p>,
+        element: <IntegrationsPage />,
       },
     ],
   },

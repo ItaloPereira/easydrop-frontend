@@ -1,5 +1,4 @@
 import type { FunctionComponent, ReactElement } from 'react';
-import React from 'react';
 
 import { Box } from '@material-ui/core';
 import type { SvgIconTypeMap } from '@material-ui/core';
@@ -34,15 +33,10 @@ const useStyles = makeStyles((theme) => ({
     alignSelf: 'flex-end',
   },
   notificationButton: {
-    // background: theme.palette.carbon[100],
     width: 32,
     height: 32,
-    '&:hover': {
-      // background: theme.palette.carbon[100],
-    },
-    '& svg': {
-      // color: theme.palette.marble[100],
-    },
+    '&:hover': {},
+    '& svg': {},
   },
 }));
 
