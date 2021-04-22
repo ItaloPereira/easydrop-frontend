@@ -10,6 +10,7 @@ import WhatsAppIcon from '@material-ui/icons/WhatsApp';
 import MainLayout from 'layouts/MainLayout';
 import HomePage from 'pages/Home';
 import IntegrationsPage from 'pages/Integrations';
+import IntegrationsYampiPage from 'pages/Integrations/Yampi';
 
 const NotFound = ({ title }: { title: string }) => {
   return (
@@ -34,6 +35,10 @@ const usePrivateRoutes = () =>
         {
           path: '/integrations',
           element: <IntegrationsPage />,
+        },
+        {
+          path: '/integrations/yampi',
+          element: <IntegrationsYampiPage />,
         },
         {
           path: '/messages',

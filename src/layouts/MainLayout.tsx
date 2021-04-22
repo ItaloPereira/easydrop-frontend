@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
   },
   sideNavContainer: {
     width: SIDE_NAV_WIDTH,
-    height: '100%',
+    height: 'calc(100% - 40px)',
     display: 'flex',
     position: 'fixed',
     marginTop: theme.spacing(5),

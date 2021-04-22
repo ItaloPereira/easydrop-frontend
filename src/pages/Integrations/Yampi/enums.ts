@@ -1,4 +1,4 @@
-export enum IntegrationsRequest {
+export enum IntegrationYampiRequest {
   IDLE = 'idle',
   PENDING = 'pending',
   SUCCESS = 'success',

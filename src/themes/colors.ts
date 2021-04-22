@@ -18,3 +18,8 @@ export const brandVariants = {
   },
   primaryLight: `${brandColors.primary}B3`,
 };
+
+export const commonColors = {
+  black: '#000000',
+  white: '#FFFFFF',
+};

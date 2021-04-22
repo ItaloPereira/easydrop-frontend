@@ -1,6 +1,6 @@
 import { createMuiTheme } from '@material-ui/core/styles';
 
-import { brandColors, brandVariants } from './colors';
+import { brandColors, brandVariants, commonColors } from './colors';
 
 export const themeDefault = createMuiTheme({
   palette: {
@@ -9,10 +9,7 @@ export const themeDefault = createMuiTheme({
       light: brandVariants.primaryLight,
     },
     coal: brandVariants.coal,
-    common: {
-      black: '#000',
-      white: '#FFF',
-    },
+    common: commonColors,
   },
   typography: {
     fontFamily: '"hind_vadodara"',
@@ -23,6 +20,14 @@ export const themeDefault = createMuiTheme({
   overrides: {
     MuiTextField: {
       root: {
+        // '& .MuiFormLabel-root': {
+        //   color: brandVariants.coal[90],
+        // },
+
+        // '& .MuiInputAdornment-positionStart svg': {
+        //   color: brandVariants.coal[90],
+        // },
+
         '& .Mui-focused': {
           '& .MuiInputAdornment-positionStart svg': {
             color: brandColors.primary,
