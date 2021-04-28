@@ -11,7 +11,7 @@ import PageTitle from 'components/UI/PageTitle';
 import WhatsappTabs from 'components/Whatsapp/Tabs';
 
 const useStyles = makeStyles((theme) => ({
-  pageTitlteContainer: {
+  pageTitleContainer: {
     marginBottom: theme.spacing(6),
   },
 }));
@@ -19,11 +19,11 @@ const useStyles = makeStyles((theme) => ({
 const WhatsappPage: FunctionComponent = () => {
   const classes = useStyles();
 
-  const [activeTab, setActiveTab] = useState<WppServices>('boleto');
+  const [activeTab, setActiveTab] = useState<WppServices>('billet');
 
   return (
     <Box>
-      <Box className={classes.pageTitlteContainer}>
+      <Box className={classes.pageTitleContainer}>
         <PageTitle title="Whatsapp Boleto" subtitle="Envie mensagens de recuperacão de boleto!" Icon={WhatsAppIcon} />
       </Box>
       <Box>

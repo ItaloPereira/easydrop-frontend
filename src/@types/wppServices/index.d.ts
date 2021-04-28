@@ -1,3 +1,3 @@
 declare module '@portal-types/whatsapp/services' {
-  export type WppServices = 'boleto' | 'carrinho';
+  export type WppServices = 'billet' | 'cart';
 }

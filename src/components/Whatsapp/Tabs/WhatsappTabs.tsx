@@ -1,14 +1,43 @@
 import type { FunctionComponent } from 'react';
 
 import { Box, Button } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
 
+import { buttonTabs } from './constants';
+import type { ButtonTab } from './types';
 import { Props } from './types';
 
+const useStyles = makeStyles((theme) => ({
+  root: {
+    display: 'flex',
+  },
+  buttonContainer: {
+    margin: theme.spacing(0, 1, 1, 0),
+  },
+  activeButton: {
+    background: 'red',
+  },
+}));
+
 const WhatsappTabs: FunctionComponent<Props> = ({ activeTab, tabChanged }) => {
+  const classes = useStyles();
+
   return (
-    <Box>
-      <Button>Boleto</Button>
-      <Button>Carrinho</Button>
+    <Box className={classes.root}>
+      {buttonTabs.map((buttonInfo: ButtonTab) => (
+        <Box className={classes.buttonContainer}>
+          <Button
+            variant="outlined"
+            size="small"
+            aria-label="(tooltip)"
+            classes={{ root: activeTab === buttonInfo.id ? classes.activeButton : undefined }}
+            onClick={() => tabChanged(buttonInfo.id)}
+            key={buttonInfo.id}
+          >
+            {buttonInfo.label}
+          </Button>
+        </Box>
+      ))}
     </Box>
   );
 };
