@@ -8,9 +8,9 @@ import SettingsInputComponentIcon from '@material-ui/icons/SettingsInputComponen
 import WhatsAppIcon from '@material-ui/icons/WhatsApp';
 
 import MainLayout from 'layouts/MainLayout';
-import HomePage from 'pages/Home';
 import IntegrationsPage from 'pages/Integrations';
 import IntegrationsYampiPage from 'pages/Integrations/Yampi';
+import WhatsappPage from 'pages/Whatsapp';
 
 const NotFound = ({ title }: { title: string }) => {
   return (
@@ -30,7 +30,7 @@ const usePrivateRoutes = () =>
       children: [
         {
           path: '/',
-          element: <HomePage />,
+          element: <WhatsappPage />,
         },
         {
           path: '/integrations',
@@ -62,7 +62,7 @@ export const groupedRoutes: Array<GroupedRoutes> = [
         path: '/',
         title: 'WhatsApp',
         icon: WhatsAppIcon,
-        element: <HomePage />,
+        element: <WhatsappPage />,
       },
       {
         path: '/messages',

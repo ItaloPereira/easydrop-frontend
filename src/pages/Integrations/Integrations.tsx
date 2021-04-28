@@ -44,7 +44,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const HomePage = () => {
+const IntegrationsPage = () => {
   const classes = useStyles();
   const navigate = useNavigate();
 
@@ -91,4 +91,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default IntegrationsPage;
