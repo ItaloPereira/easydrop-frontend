@@ -15,7 +15,11 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(0, 1, 1, 0),
   },
   activeButton: {
-    background: 'red',
+    background: theme.palette.coal[20],
+
+    '&:hover': {
+      background: theme.palette.coal[20],
+    },
   },
 }));
 

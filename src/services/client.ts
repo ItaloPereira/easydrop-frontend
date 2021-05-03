@@ -5,14 +5,17 @@ export class HTTPError<T> extends Error {
 
   statusNumber: number;
 
+  isServerError: boolean;
+
   constructor(message: string, response: HttpResponse<T>) {
     super(message);
     this.response = response;
     this.statusNumber = response.status;
+    this.isServerError = response.status >= 500;
   }
 }
 
-type FetchConfig = RequestInit & {
+export type FetchConfig = RequestInit & {
   data?: {
     [key: string]: any;
   };
