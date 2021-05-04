@@ -11,7 +11,7 @@ import { Alert } from '@material-ui/lab';
 
 import FormCard from 'components/UI/FormCard';
 import PageTitle from 'components/UI/PageTitle';
-import { getYampiIntegration, setYampiData } from 'services/integrationsYampi';
+import { getYampiIntegration, setYampiData } from 'services/integrations';
 
 import { IntegrationYampiRequest } from './enums';
 import { IntegrationYampiFormData } from './types';

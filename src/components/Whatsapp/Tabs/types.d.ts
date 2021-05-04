@@ -1,4 +1,4 @@
-import { WppServices } from '@portal-types/whatsapp/services';
+import { WppServices } from '@portal-types/pages/whatsapp';
 
 export type Props = {
   activeTab: WppServices;
