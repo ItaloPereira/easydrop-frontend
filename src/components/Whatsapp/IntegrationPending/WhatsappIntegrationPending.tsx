@@ -15,6 +15,8 @@ const useStyles = makeStyles((theme) => ({
     '& p': {
       fontSize: '16px',
       fontWeight: '600',
+      maxWidth: 400,
+      margin: `${theme.spacing(3)}px auto`,
     },
 
     '& img': {

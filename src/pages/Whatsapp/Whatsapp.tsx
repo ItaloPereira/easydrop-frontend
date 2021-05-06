@@ -15,7 +15,8 @@ import WhatsappTabs from 'components/Whatsapp/Tabs';
 import { useFetchGet } from 'hooks/useFetch';
 
 import { pageTitles, pageDescs } from './constants';
-import { NullableWppServices } from './types';
+import { ContentStep } from './enums';
+import type { NullableWppServices } from './types';
 
 const useStyles = makeStyles((theme) => ({
   pageRoot: {
@@ -46,6 +47,7 @@ const WhatsappPage: FunctionComponent = () => {
   const navigate = useNavigate();
 
   const [searchParams, setSearchParams] = useSearchParams([['active', 'billet']]);
+  const [contentStep, setContentStep] = useState<ContentStep>(ContentStep.INTEGRATION);
   const [filters, setFilters] = useState<{ active: NullableWppServices }>(
     getQueryParams(searchParams) ?? defaultFilters,
   );
@@ -55,6 +57,13 @@ const WhatsappPage: FunctionComponent = () => {
   const normalizeQuery = () => {
     if (!filters.active) return { active: 'billet' };
     return { active: filters.active };
+  };
+
+  const contents = {
+    [ContentStep.INTEGRATION]: <WhatsappIntegrationPending onIntegrate={() => navigate('/integrations/yampi')} />,
+    [ContentStep.PENDING]: <WhatsappIntegrationPending onIntegrate={() => navigate('/integrations/yampi')} />,
+    [ContentStep.BILLET]: <WhatsappIntegrationPending onIntegrate={() => navigate('/integrations/yampi')} />,
+    [ContentStep.CART]: <WhatsappIntegrationPending onIntegrate={() => navigate('/integrations/yampi')} />,
   };
 
   useEffect(() => {
@@ -70,9 +79,7 @@ const WhatsappPage: FunctionComponent = () => {
       <Box>
         <WhatsappTabs activeTab={filters.active!} tabChanged={(tab: WppServices) => setFilters({ active: tab })} />
       </Box>
-      <Box>
-        <WhatsappIntegrationPending onIntegrate={() => navigate('/integrations/yampi')} />
-      </Box>
+      <Box>{contents[contentStep]}</Box>
     </Box>
   );
 };
