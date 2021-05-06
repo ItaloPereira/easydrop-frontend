@@ -20,14 +20,6 @@ export const themeDefault = createMuiTheme({
   overrides: {
     MuiTextField: {
       root: {
-        // '& .MuiFormLabel-root': {
-        //   color: brandVariants.coal[90],
-        // },
-
-        // '& .MuiInputAdornment-positionStart svg': {
-        //   color: brandVariants.coal[90],
-        // },
-
         '& .Mui-focused': {
           '& .MuiInputAdornment-positionStart svg': {
             color: brandColors.primary,
@@ -40,6 +32,11 @@ export const themeDefault = createMuiTheme({
         '&.Mui-disabled': {
           backgroundColor: brandVariants.primaryLight,
         },
+      },
+    },
+    MuiBadge: {
+      colorSecondary: {
+        backgroundColor: '#4caf50',
       },
     },
   },

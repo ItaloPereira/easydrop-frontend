@@ -10,10 +10,12 @@ import { makeStyles } from '@material-ui/core/styles';
 import WhatsAppIcon from '@material-ui/icons/WhatsApp';
 
 import PageTitle from 'components/UI/PageTitle';
+import WhatsappBilletList from 'components/Whatsapp/BilletList';
 import WhatsappIntegrationPending from 'components/Whatsapp/IntegrationPending';
 import WhatsappTabs from 'components/Whatsapp/Tabs';
 import { useFetchGet } from 'hooks/useFetch';
 
+import { whatsappBilletData } from './__mocks__';
 import { pageTitles, pageDescs } from './constants';
 import { ContentStep } from './enums';
 import type { NullableWppServices } from './types';
@@ -47,7 +49,7 @@ const WhatsappPage: FunctionComponent = () => {
   const navigate = useNavigate();
 
   const [searchParams, setSearchParams] = useSearchParams([['active', 'billet']]);
-  const [contentStep, setContentStep] = useState<ContentStep>(ContentStep.INTEGRATION);
+  const [contentStep, setContentStep] = useState<ContentStep>(ContentStep.BILLET);
   const [filters, setFilters] = useState<{ active: NullableWppServices }>(
     getQueryParams(searchParams) ?? defaultFilters,
   );
@@ -62,7 +64,7 @@ const WhatsappPage: FunctionComponent = () => {
   const contents = {
     [ContentStep.INTEGRATION]: <WhatsappIntegrationPending onIntegrate={() => navigate('/integrations/yampi')} />,
     [ContentStep.PENDING]: <WhatsappIntegrationPending onIntegrate={() => navigate('/integrations/yampi')} />,
-    [ContentStep.BILLET]: <WhatsappIntegrationPending onIntegrate={() => navigate('/integrations/yampi')} />,
+    [ContentStep.BILLET]: <WhatsappBilletList data={whatsappBilletData} />,
     [ContentStep.CART]: <WhatsappIntegrationPending onIntegrate={() => navigate('/integrations/yampi')} />,
   };
 

@@ -8,4 +8,5 @@ export type Props = {
 export type ButtonTab = {
   label: string;
   id: WppServices;
+  title: string;
 };

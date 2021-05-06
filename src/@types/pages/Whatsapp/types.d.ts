@@ -2,14 +2,14 @@ declare module '@portal-types/pages/whatsapp' {
   export type WppBilletResponse = WppBilletRequestSuccess & WppBilletRequestError;
 
   export type WppBilletRequestSuccess = {
-    data: RequestSuccessData[];
+    data: WhatsappBilletData[];
   };
 
-  type RequestSuccessData = {
+  export type WhatsappBilletData = {
     id: string;
     product_image: string;
     is_sent: boolean;
-    message: string;
+    message?: string;
     order: Order;
     client: Client;
   };

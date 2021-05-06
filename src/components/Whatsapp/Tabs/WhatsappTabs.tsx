@@ -3,6 +3,8 @@ import type { FunctionComponent } from 'react';
 import { Box, Button } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
+import CustomTooltip from 'components/UI/Tooltip';
+
 import { buttonTabs } from './constants';
 import type { ButtonTab } from './types';
 import { Props } from './types';
@@ -21,6 +23,10 @@ const useStyles = makeStyles((theme) => ({
       background: theme.palette.coal[20],
     },
   },
+  tooltipText: {
+    // fontSize: '14px',
+    // lineHeight: '16px',
+  },
 }));
 
 const WhatsappTabs: FunctionComponent<Props> = ({ activeTab, tabChanged }) => {
@@ -30,16 +36,18 @@ const WhatsappTabs: FunctionComponent<Props> = ({ activeTab, tabChanged }) => {
     <Box className={classes.root}>
       {buttonTabs.map((buttonInfo: ButtonTab) => (
         <Box className={classes.buttonContainer}>
-          <Button
-            variant="outlined"
-            size="small"
-            aria-label="(tooltip)"
-            classes={{ root: activeTab === buttonInfo.id ? classes.activeButton : undefined }}
-            onClick={() => tabChanged(buttonInfo.id)}
-            key={buttonInfo.id}
-          >
-            {buttonInfo.label}
-          </Button>
+          <CustomTooltip title={<span className={classes.tooltipText}>{buttonInfo.title}</span>} arrow placement="top">
+            <Button
+              variant="outlined"
+              size="small"
+              aria-label={buttonInfo.title}
+              classes={{ root: activeTab === buttonInfo.id ? classes.activeButton : undefined }}
+              onClick={() => tabChanged(buttonInfo.id)}
+              key={buttonInfo.id}
+            >
+              {buttonInfo.label}
+            </Button>
+          </CustomTooltip>
         </Box>
       ))}
     </Box>
